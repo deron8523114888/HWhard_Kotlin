@@ -1,0 +1,2 @@
+rootProject.name='HWhard_Kolin'
+include ':app', ':demo'

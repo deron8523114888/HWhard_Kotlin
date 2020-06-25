@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1058029431440",
+    "firebase_url": "https://hwhard-88617.firebaseio.com",
+    "project_id": "hwhard-88617",
+    "storage_bucket": "hwhard-88617.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058029431440:android:8af68bdb3be5d7670d0615",
+        "android_client_info": {
+          "package_name": "com.example.hwhard_kolin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058029431440-a7ib7204mlfbqveldcf1ffi8kufmhbk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH_1KYFRkn_3etD6BA3hTI_cLeTf-7s8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058029431440-a7ib7204mlfbqveldcf1ffi8kufmhbk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

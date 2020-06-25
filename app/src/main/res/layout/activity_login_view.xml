@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.login.LoginView">
+
+    <ImageView
+        android:id="@+id/iv_hard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toTopOf="@id/gl_imagebot"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
+        app:layout_constraintTop_toBottomOf="@id/gl_imagetop" />
+
+    <TextView
+        android:id="@+id/tv_bg_account_password"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
+        app:layout_constraintTop_toBottomOf="@id/gl_layout_top" />
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account"
+        android:textSize="28dp"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
+        app:layout_constraintTop_toBottomOf="@id/gl_layout_top" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/password"
+        android:textSize="28dp"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
+        app:layout_constraintTop_toBottomOf="@id/tv_account" />
+
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_account"
+        app:layout_constraintLeft_toRightOf="@id/tv_account"
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
+        app:layout_constraintTop_toTopOf="@id/tv_account" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_password"
+        app:layout_constraintLeft_toRightOf="@id/tv_password"
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
+        app:layout_constraintTop_toTopOf="@id/tv_password" />
+
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_imagetop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_imagebot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_imageleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_imageright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_layout_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_layout_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_login"
+        android:textSize="22dp"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
+        app:layout_constraintRight_toLeftOf="@id/bt_register"
+        app:layout_constraintTop_toBottomOf="@id/gl_layout_bottom" />
+
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_register"
+        android:textSize="22dp"
+        app:layout_constraintLeft_toRightOf="@id/bt_login"
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
+        app:layout_constraintTop_toBottomOf="@id/gl_layout_bottom" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

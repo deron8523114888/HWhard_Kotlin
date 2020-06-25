@@ -1,0 +1,415 @@
+<resources>
+    <string name="app_name">HWhard_Kolin</string>
+    <string name="account">帳號：</string>
+    <string name="password">密碼：</string>
+    <string name="Name">姓名：</string>
+    <string name="school">學校：</string>
+    <string name="btn_submit">提交</string>
+    <string name="btn_back">返回</string>
+    <string name="btn_login">登入</string>
+    <string name="btn_register">註冊</string>
+
+    <string-array name="city">
+        <item>基隆市</item>
+        <item>台北市</item>
+        <item>新北市</item>
+        <item>桃園市</item>
+        <item>新竹縣</item>
+        <item>新竹市</item>
+        <item>苗栗縣</item>
+        <item>台中市</item>
+        <item>彰化縣市</item>
+        <item>南投縣市</item>
+        <item>雲林縣</item>
+        <item>嘉義縣</item>
+        <item>嘉義市</item>
+        <item>台南市</item>
+        <item>高雄市</item>
+        <item>屏東縣市</item>
+    </string-array>
+
+
+    <string-array name="Keelung">
+        <item>國立基隆女中</item>
+        <item>國立基隆高中</item>
+        <item>市立中山中學</item>
+        <item>市立安樂高中</item>
+        <item>市立暖暖高中</item>
+        <item>市立八斗高中</item>
+        <item>私立二信高中</item>
+        <item>私立聖心高中</item>
+    </string-array>
+
+    <string-array name="New_Taipei">
+        <item>國立師大附中</item>
+        <item>國立政大附中</item>
+        <item>市立大同高中</item>
+        <item>市立大直高中</item>
+        <item>市立大理高中</item>
+        <item>市立中山女中</item>
+        <item>市立中正中學</item>
+        <item>市立中崙高中</item>
+        <item>市立內湖高中</item>
+        <item>市立北一女中</item>
+        <item>市立永春高中</item>
+        <item>市立成功中學</item>
+        <item>市立西松高中</item>
+        <item>市立成淵高中</item>
+        <item>市立百齡高中</item>
+        <item>市立育成高中</item>
+        <item>市立松山高中</item>
+        <item>市立和平高中</item>
+        <item>市立明倫高中</item>
+        <item>市立建國中學</item>
+        <item>市立南港高中</item>
+        <item>市立南湖高中</item>
+        <item>市立華江高中</item>
+        <item>台北陽明高中</item>
+        <item>市立景美女中</item>
+        <item>市立復興高中</item>
+        <item>市立萬芳高中</item>
+        <item>市立麗山高中</item>
+        <item>私立十信高中</item>
+        <item>私立大同高中</item>
+        <item>私立開平餐飲</item>
+        <item>私立南華高中</item>
+        <item>私立薇閣高中</item>
+        <item>私立大誠中學</item>
+        <item>私立文德女中</item>
+        <item>私立中興中學</item>
+        <item>私立方濟中學</item>
+        <item>私立立人高中</item>
+        <item>私立再興中學</item>
+        <item>私立東山中學</item>
+        <item>私立延平中學</item>
+        <item>私立金甌女中</item>
+        <item>私立泰北中學</item>
+        <item>私立祐德中學</item>
+        <item>私立強恕中學</item>
+        <item>私立景文高中</item>
+        <item>私立開平高中</item>
+        <item>私立華興中學</item>
+        <item>私立達人女中</item>
+        <item>私立滬江中學</item>
+        <item>私立衛理女中</item>
+        <item>私立靜修女中</item>
+        <item>復興實驗高中</item>
+        <item>奎山實驗高中</item>
+
+    </string-array>
+
+    <string-array name="Taipei">
+        <item>國立華僑中學</item>
+        <item>市立泰山高中</item>
+        <item>市立新店高中</item>
+        <item>市立新莊高中</item>
+        <item>市立三民高中</item>
+        <item>市立三重高中</item>
+        <item>市立永平高中</item>
+        <item>市立石碇高中</item>
+        <item>市立安康高中</item>
+        <item>市立秀峰高中</item>
+        <item>市立金山高中</item>
+        <item>北市明德高中</item>
+        <item>市立海山高中</item>
+        <item>市立清水高中</item>
+        <item>市立樹林高中</item>
+        <item>市立錦和高中</item>
+        <item>市立雙溪高中</item>
+        <item>私立及人高中</item>
+        <item>私立中華高中</item>
+        <item>私立光仁高中</item>
+        <item>私立竹林高中</item>
+        <item>私立東海高中</item>
+        <item>私立金陵女中</item>
+        <item>私立南山高中</item>
+        <item>私立恆毅高中</item>
+        <item>私立格致高中</item>
+        <item>私立徐匯高中</item>
+        <item>私立崇光女中</item>
+        <item>私立淡江高中</item>
+        <item>私立崇義高中</item>
+        <item>私立聖心女中</item>
+        <item>私立醒吾高中</item>
+        <item>私立辭修高中</item>
+        <item>市立三重高中</item>
+        <item>市立中和高中</item>
+        <item>市立林口高中</item>
+        <item>市立板橋高中</item>
+    </string-array>
+
+    <string-array name="Taoyuan">
+        <item>國立中央附中</item>
+        <item>市立中壢高中</item>
+        <item>市立內壢高中</item>
+        <item>市立武陵高中</item>
+        <item>市立桃園高中</item>
+        <item>桃園陽明高中</item>
+        <item>市立楊梅高中</item>
+        <item>市立永豐高中</item>
+        <item>市立平鎮高中</item>
+        <item>市立南崁高中</item>
+        <item>市立龍潭高中</item>
+        <item>市立大溪高中</item>
+        <item>市立壽山高中</item>
+        <item>市立大園高中</item>
+        <item>市立觀音高中</item>
+        <item>市立新屋高中</item>
+        <item>市立羅浮高中</item>
+        <item>私立大華高中</item>
+        <item>私立大興高中</item>
+        <item>私立六和高中</item>
+        <item>私立光啟高中</item>
+        <item>私立至善高中</item>
+        <item>私立育達高中</item>
+        <item>私立治平高中</item>
+        <item>私立泉僑高中</item>
+        <item>私立振聲高中</item>
+        <item>私立啟英高中</item>
+        <item>私立復旦高中</item>
+        <item>私立新興高中</item>
+        <item>私立泉橋高中</item>
+        <item>私立清華高中</item>
+        <item>私立漢英高中</item>
+        <item>有得實驗高中</item>
+    </string-array>
+
+    <string-array name="Hsinchu_County">
+        <item>國立竹北高中</item>
+        <item>國立竹東高中</item>
+        <item>國立關西高中</item>
+        <item>縣立湖口中學</item>
+        <item>縣立六家高中</item>
+        <item>私立仰德高中</item>
+        <item>私立忠信高中</item>
+        <item>私立東泰高中</item>
+        <item>私立義民高中</item>
+    </string-array>
+
+    <string-array name="Hsinchu">
+        <item>國立科工實中</item>
+        <item>國立新竹女中</item>
+        <item>國立新竹高中</item>
+        <item>市立成德中學</item>
+        <item>市立香山中學</item>
+        <item>市立建功高中</item>
+        <item>私立世界高中</item>
+        <item>私立光復高中</item>
+        <item>私立磐石高中</item>
+        <item>私立曙光女中</item>
+    </string-array>
+
+    <string-array name="Miaoli">
+        <item>國立竹南高中</item>
+        <item>國立卓蘭高中</item>
+        <item>國立苗栗高中</item>
+        <item>國立苑裡高中</item>
+        <item>縣立苑裡高中</item>
+        <item>縣立興華高中</item>
+        <item>縣立三義高中</item>
+        <item>苗栗大同高中</item>
+        <item>私立大成高中</item>
+        <item>私立君毅高中</item>
+        <item>私立建台高中</item>
+        <item>全人實驗高中</item>
+    </string-array>
+
+    <string-array name="Taichung">
+        <item>中科實驗高中</item>
+        <item>國立大里高中</item>
+        <item>國立中興附中</item>
+        <item>市立臺中一中</item>
+        <item>市立臺中二中</item>
+        <item>市立臺中女中</item>
+        <item>市立大甲高中</item>
+        <item>市立中港高中</item>
+        <item>市立文華高中</item>
+        <item>市立大里高中</item>
+        <item>市立后綜高中</item>
+        <item>市立西苑高中</item>
+        <item>市立忠明高中</item>
+        <item>市立長億高中</item>
+        <item>市立清水高中</item>
+        <item>市立惠文高中</item>
+        <item>市立新社高中</item>>
+        <item>市立豐原高中</item>
+        <item>市立龍津高中</item>
+        <item>私立大明高中</item>
+        <item>私立弘文高中</item>
+        <item>私立玉山高中</item>
+        <item>私立立人高中</item>
+        <item>私立宜寧高中</item>
+        <item>私立明台高中</item>
+        <item>私立明道高中</item>
+        <item>台中明德高中</item>
+        <item>私立東海附中</item>
+        <item>台中東山高中</item>
+        <item>私立青年高中</item>
+        <item>私立致用高中</item>
+        <item>常春藤高中</item>
+        <item>華盛頓高中</item>
+        <item>私立慈明高中</item>
+        <item>私立新民高中</item>
+        <item>私立葳格高中</item>
+        <item>私立僑泰高中</item>
+        <item>私立嘉陽高中</item>
+        <item>私立衛道高中</item>
+        <item>私立曉明女中</item>
+        <item>私立嶺東高中</item>
+    </string-array>
+
+    <string-array name="Changhua">
+        <item>國立員林高中</item>
+        <item>國立鹿港高中</item>
+        <item>國立溪湖高中</item>
+        <item>國立彰化女中</item>
+        <item>國立彰化高中</item>
+        <item>和美實驗高中</item>
+        <item>縣立二林高中</item>
+        <item>彰化藝術高中</item>
+        <item>縣立成功高中</item>
+        <item>縣立田中高中</item>
+        <item>縣立和美高中</item>
+        <item>私立文興高中</item>
+        <item>私立正德高中</item>
+        <item>私立精誠高中</item>
+    </string-array>
+
+    <string-array name="Nantou">
+        <item>國立中興高中</item>
+        <item>國立竹山高中</item>
+        <item>國立南投高中</item>
+        <item>國立暨大附中</item>
+        <item>縣立旭光高中</item>
+        <item>私立五育高中</item>
+        <item>私立三育高中</item>
+        <item>私立普台高中</item>
+        <item>弘明實驗高中</item>
+    </string-array>
+
+    <string-array name="Yunlin">
+        <item>國立斗六高中</item>
+        <item>國立北港高中</item>
+        <item>國立虎尾高中</item>
+        <item>縣立斗南高中</item>
+        <item>縣立麥寮高中</item>
+        <item>私立文生高中</item>
+        <item>私立正心高中</item>
+        <item>私立永年高中</item>
+        <item>私立宗聖高中</item>
+        <item>私立崇先高中</item>
+        <item>私立揚子高中</item>
+        <item>私立義峰高中</item>
+        <item>私立福智高中</item>
+        <item>私立巨人高中</item>
+        <item>維多利亞實中</item>
+    </string-array>
+
+    <string-array name="Chiayi_County">
+        <item>國立東石高中</item>
+        <item>國立新港藝中</item>
+        <item>縣立竹崎高中</item>
+        <item>縣立永慶高中</item>
+        <item>私立同濟高中</item>
+        <item>私立協同高中</item>
+        <item>私立明華高中</item>
+    </string-array>
+
+    <string-array name="Chiayi">
+        <item>國立嘉義女中</item>
+        <item>國立嘉義高中</item>
+        <item>私立仁義高中</item>
+        <item>私立宏仁女中</item>
+        <item>私立輔仁高中</item>
+        <item>私立嘉華高中</item>
+        <item>私立興華高中</item>
+        <item>私立立仁高中</item>
+    </string-array>
+
+    <string-array name="Tainan">
+        <item>國立臺南一中</item>
+        <item>國立臺南二中</item>
+        <item>國立臺南女中</item>
+        <item>國立南大附中</item>
+        <item>國立北門高中</item>
+        <item>國立新營高中</item>
+        <item>國立家齊高中</item>
+        <item>國立後壁高中</item>
+        <item>國立新豐高中</item>
+        <item>國立善化高中</item>
+        <item>國立新化高中</item>
+        <item>國立南科實中</item>
+        <item>市立大灣高中</item>
+        <item>市立南寧高中</item>
+        <item>市立土城高中</item>
+        <item>市立永仁高中</item>
+        <item>私立長榮高中</item>
+        <item>私立長榮女中</item>
+        <item>私立南光高中</item>
+        <item>私立光華高中</item>
+        <item>私立六信高中</item>
+        <item>私立瀛海高中</item>
+        <item>私立崑山高中</item>
+        <item>私立德光高中</item>
+        <item>私立黎明高中</item>
+        <item>私立聖功女中</item>
+        <item>私立港明高中</item>
+        <item>私立興國高中</item>
+        <item>私立明達高中</item>
+        <item>私立新榮高中</item>
+        <item>私立鳳和高中</item>
+        <item>私立慈濟高中</item>
+    </string-array>
+
+    <string-array name="Kaohsiung">
+        <item>國立岡山高中</item>
+        <item>國立鳳山高中</item>
+        <item>國立中山附中</item>
+        <item>國立旗美高中</item>
+        <item>國立鳳新高中</item>
+        <item>國立高師附中</item>
+        <item>市立高雄高中</item>
+        <item>市立高雄女中</item>
+        <item>市立小港高中</item>
+        <item>市立瑞祥高中</item>
+        <item>市立新莊高中</item>
+        <item>市立林園高中</item>
+        <item>市立中正高中</item>
+        <item>市立三民高中</item>
+        <item>市立鼓山高中</item>
+        <item>市立仁武高中</item>
+        <item>市立路竹高中</item>
+        <item>市立楠梓高中</item>
+        <item>市立六龜高中</item>
+        <item>市立文山高中</item>
+        <item>市立新興高中</item>
+        <item>市立福誠高中</item>
+        <item>市立左營高中</item>
+        <item>市立前鎮高中</item>
+        <item>市立中山高中</item>
+        <item>私立復華高中</item>
+        <item>私立道明高中</item>
+        <item>私立普門高中</item>
+        <item>私立大榮高中</item>
+        <item>私立立志高中</item>
+        <item>私立新光高中</item>
+        <item>私立正義高中</item>
+        <item>私立明誠高中</item>
+        <item>私立義大高中</item>
+    </string-array>
+
+    <string-array name="Pingtung">
+        <item>國立屏東女中</item>
+        <item>國立屏東高中</item>
+        <item>國立潮州高中</item>
+        <item>國立屏北高中</item>
+        <item>縣立東港高中</item>
+        <item>縣立來義高中</item>
+        <item>縣立枋寮高中</item>
+        <item>縣立大同高中</item>
+        <item>私立美和高中</item>
+        <item>私立陸興高中</item>
+        <item>私立屏榮高中</item>
+    </string-array>
+
+</resources>
