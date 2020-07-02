@@ -26,17 +26,20 @@
 
 
             <Button
+                android:id="@+id/btn_rank"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/btn_personal_rank" />
 
             <Button
+                android:id="@+id/btn_wrong_text"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/btn_personal_wrong" />
 
             <Button
+                android:id="@+id/btn_announcement"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"

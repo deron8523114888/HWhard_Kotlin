@@ -11,6 +11,10 @@ interface LoginContract{
         fun showErrorMessage(error:String)
 
         fun goManuView()
+
+        fun startLoadingView()
+
+        fun finishLoadingView()
     }
 
     interface presenter : BasePresenter{

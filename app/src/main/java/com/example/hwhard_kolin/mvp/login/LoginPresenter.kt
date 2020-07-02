@@ -1,19 +1,19 @@
 package com.example.hwhard_kolin.mvp.login
 
-import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.hwhard_kolin.util.NetWork
 
-class LoginPresenter(val view: LoginContract.view?, val connectivityManager: ConnectivityManager) :
+class LoginPresenter(val mView: LoginContract.view?) :
     LoginContract.presenter {
 
     var mAccount: String? = null
     var mPassword: String? = null
 
     init {
-        view?.setPresenter(this)
+        mView?.setPresenter(this)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -22,10 +22,12 @@ class LoginPresenter(val view: LoginContract.view?, val connectivityManager: Con
         mAccount = account
         mPassword = password
 
+        mView?.startLoadingView()
         if (mAccount!!.isNotEmpty() && mPassword!!.isNotEmpty()) {
             startDetect()
         } else {
-            view?.showErrorMessage("帳號、密碼不得為空")
+            mView?.finishLoadingView()
+            mView?.showErrorMessage("帳號、密碼不得為空")
         }
 
     }
@@ -33,16 +35,15 @@ class LoginPresenter(val view: LoginContract.view?, val connectivityManager: Con
     // 偵測有無網路
     @RequiresApi(Build.VERSION_CODES.M)
     fun detectNetWork() {
-        val network = connectivityManager.activeNetwork
-        if (network != null) {
-            val NC = connectivityManager.getNetworkCapabilities(network)
-            if (NC != null) {
-                if (NC.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
-                    detectServer()
-                }
-            }
+        val manager = NetWork.getManager()
+        val capabilities = manager.getNetworkCapabilities(manager.activeNetwork)
+
+        if (capabilities != null && capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
+            detectServer()
         } else {
-            view?.showErrorMessage("請檢查網路")
+            mView?.finishLoadingView()
+            mView?.showErrorMessage("請檢查網路")
+            return
         }
     }
 
@@ -53,8 +54,13 @@ class LoginPresenter(val view: LoginContract.view?, val connectivityManager: Con
 
     fun detectAP() {
 
-        view?.goManuView()
         // Todo 得取資料庫的帳密比對
+        if(mAccount == "1234" && mPassword == "1234"){
+            mView?.goManuView()
+        }else{
+            mView?.finishLoadingView()
+            mView?.showErrorMessage("帳號或密碼錯誤")
+        }
     }
 
 

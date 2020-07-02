@@ -1,6 +1,6 @@
 package com.example.hwhard_kolin.mvp.manu
 
-class ManuPresenter(view:ManuContract.View?) :ManuContract.Presenter{
+class ManuPresenter(val view: ManuView) :ManuContract.Presenter{
 
     init {
         view?.setPresenter(this)

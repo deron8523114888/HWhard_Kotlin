@@ -1,9 +1,9 @@
-package com.example.hwhard_kolin.mvp.manu
+package com.example.hwhard_kolin.mvp.rank
 
 import co.bxvip.ui.tocleanmvp.base.BasePresenter
 import co.bxvip.ui.tocleanmvp.base.BaseView
 
-interface ManuContract {
+interface RankContract {
 
     interface View : BaseView<Presenter> {
 
@@ -12,6 +12,8 @@ interface ManuContract {
 
     interface Presenter : BasePresenter {
 
+
     }
+
 
 }
