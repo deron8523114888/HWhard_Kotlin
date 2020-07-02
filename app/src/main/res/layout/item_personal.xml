@@ -72,6 +72,8 @@
                     android:textSize="26dp" />
 
                 <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="7"
@@ -85,46 +87,114 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
+                android:layout_marginLeft="20dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_personal_rank"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="牌位"
-                    android:textSize="20dp" />
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="牌位："
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_personal_rank"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="乙級"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/tv_personal_score"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="分數"
-                    android:textSize="20dp" />
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="分數："
+                        android:textSize="16dp"
+                        android:gravity="center"/>
 
 
-                <TextView
-                    android:id="@+id/tv_personal_win"
+                    <TextView
+                        android:id="@+id/tv_personal_score"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="90"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="勝場"
-                    android:textSize="18dp" />
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="勝場："
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_personal_win"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="782"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/tv_personal_lose"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="敗場"
-                    android:textSize="18dp" />
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="敗場："
+                        android:textSize="16dp"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_personal_lose"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="307"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -145,7 +215,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="名稱"
-                android:textSize="20dp" />
+                android:textSize="16dp" />
 
 
             <TextView
@@ -155,7 +225,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="學校"
-                android:textSize="20dp" />
+                android:textSize="16dp" />
 
 
             <TextView
@@ -165,7 +235,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="ID"
-                android:textSize="20dp" />
+                android:textSize="16dp" />
 
 
         </LinearLayout>
@@ -192,7 +262,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.23" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_layout_bottom"

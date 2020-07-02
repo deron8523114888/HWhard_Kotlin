@@ -19,7 +19,7 @@ import com.example.hwhard_kolin.mvp.rank.RankView
 import kotlinx.android.synthetic.main.item_personal.*
 
 class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
-    PersonalContract.View ,View.OnClickListener, View.OnTouchListener{
+    PersonalContract.View , View.OnTouchListener,View.OnClickListener{
 
     var PersonalBean = SharePreference.getPersonalData()
 
@@ -50,7 +50,7 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
     }
 
     override fun isActive(): Boolean {
-        TODO("Not yet implemented")
+        return true
     }
 
     override fun setPresenter(p0: PersonalContract.Presenter?) {
@@ -66,6 +66,7 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
         tv_personal_win.text = PersonalBean?.mWin.toString()
         tv_personal_lose.text = PersonalBean?.mLose.toString()
 
+
         btn_rank.setOnClickListener(this)
         btn_rank.setOnTouchListener(this)
 
@@ -74,6 +75,7 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
 
         btn_announcement.setOnClickListener(this)
         btn_announcement.setOnTouchListener(this)
+
     }
 
     override fun initDatas() {
@@ -103,15 +105,23 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
 
         when (event?.action) {
+
+            //按下
             MotionEvent.ACTION_DOWN -> {
                 downAnimation(v)
             }
+            // 移出畫面 放開
+            MotionEvent.ACTION_HOVER_EXIT -> {
+                upAnimation(v)
+            }
+            // 彈起
             MotionEvent.ACTION_UP -> {
                 upAnimation(v)
             }
         }
 
-        return true
+        // 若為 true 則不會響應其他動作 ( 不會響應 onClick listener )
+        return false
     }
 
 

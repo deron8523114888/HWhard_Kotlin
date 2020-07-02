@@ -9,11 +9,11 @@ class RankPresenter(val mView : RankContract.View?):RankContract.Presenter{
     }
 
     override fun onDestory() {
-        TODO("Not yet implemented")
+       // TODO("Not yet implemented")
     }
 
     override fun start() {
-        TODO("Not yet implemented")
+       // TODO("Not yet implemented")
     }
 
 

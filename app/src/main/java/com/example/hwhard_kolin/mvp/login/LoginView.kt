@@ -53,7 +53,8 @@ class LoginView : BaseMvpActivity<LoginContract.presenter>(), LoginContract.view
 
     override fun initView(p0: View?) {
 
-        val personalBean = PersonalBean("1", "2", "3", "4", "5", "6", 1, 2, 3)
+        val personalBean = PersonalBean("1234", "1234", "Deron", "國立高雄中學", "758",
+            "乙級", 95, 772, 361)
 
         // 初始化 SharePreference
         SharePreference.initContext(this)

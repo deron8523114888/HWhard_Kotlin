@@ -15,7 +15,7 @@ class RankView : BaseMvpActivity<RankContract.Presenter>(),RankContract.View{
     }
 
     override fun initView(p0: View?) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     override fun isActive(): Boolean {
