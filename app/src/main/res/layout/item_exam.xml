@@ -10,21 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.22" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_layout_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.87" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_layout_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_layout_bottom"
@@ -38,90 +31,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.2" />
 
 
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:rotation="-10"
-        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
+    <Button
+        android:id="@+id/btn_chapter_practice"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_exam_title"
+        android:text="章節練習"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_GSAT"
         app:layout_constraintLeft_toRightOf="@id/gl_layout_left"
+        app:layout_constraintRight_toLeftOf="@id/btn_whole_book_practice"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_whole_book_practice"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_exam_title"
+        android:text="全冊練習"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_rank"
+        app:layout_constraintLeft_toRightOf="@id/btn_chapter_practice"
         app:layout_constraintRight_toLeftOf="@id/gl_layout_right"
-        app:layout_constraintTop_toBottomOf="@id/gl_layout_top">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_exam_title"
-                android:text="章節練習"
-                android:textSize="20dp" />
+    <Button
+        android:id="@+id/btn_GSAT"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_exam_title"
+        android:text="學測練習"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_exam_btn_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_layout_left"
+        app:layout_constraintRight_toLeftOf="@id/btn_rank"
+        app:layout_constraintTop_toBottomOf="@id/btn_chapter_practice" />
 
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_exam_title"
-                android:text="全冊練習"
-                android:textSize="20dp" />
+    <Button
+        android:id="@+id/btn_rank"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_exam_title"
+        android:text="個人牌位"
+        android:textSize="20dp"
 
+        app:layout_constraintBottom_toTopOf="@id/gl_exam_btn_bottom"
+        app:layout_constraintLeft_toRightOf="@id/btn_GSAT"
+        app:layout_constraintRight_toLeftOf="@id/gl_layout_right"
+        app:layout_constraintTop_toBottomOf="@id/btn_whole_book_practice" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_exam_title"
-                android:text="學測練習"
-                android:textSize="20dp" />
-
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_exam_title"
-                android:text="個人牌位"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="8">
-
-
-
-
-
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

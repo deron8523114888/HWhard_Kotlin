@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1058029431440",
-    "firebase_url": "https://hwhard-88617.firebaseio.com",
-    "project_id": "hwhard-88617",
-    "storage_bucket": "hwhard-88617.appspot.com"
+    "project_number": "193374280869",
+    "firebase_url": "https://math-37aa8.firebaseio.com",
+    "project_id": "math-37aa8",
+    "storage_bucket": "math-37aa8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1058029431440:android:8af68bdb3be5d7670d0615",
+        "mobilesdk_app_id": "1:193374280869:android:8dd6943965f64ab383c14c",
         "android_client_info": {
           "package_name": "com.example.hwhard_kolin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1058029431440-a7ib7204mlfbqveldcf1ffi8kufmhbk7.apps.googleusercontent.com",
+          "client_id": "193374280869-k2akucrmc11d4oifa9nmuhm4i2qpoaub.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCH_1KYFRkn_3etD6BA3hTI_cLeTf-7s8k"
+          "current_key": "AIzaSyCaW1Y0-EhRk4fQmPsiohRNY-qUo5PZhpo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1058029431440-a7ib7204mlfbqveldcf1ffi8kufmhbk7.apps.googleusercontent.com",
+              "client_id": "193374280869-k2akucrmc11d4oifa9nmuhm4i2qpoaub.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

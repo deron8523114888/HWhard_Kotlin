@@ -41,6 +41,8 @@ class ManuView : BaseMvpActivity<ManuContract.Presenter>(),ManuContract.View{
             // 文字大小
             textSize = 50
 
+
+
             // 文字顏色
             textColor = Color.WHITE
 
@@ -56,6 +58,7 @@ class ManuView : BaseMvpActivity<ManuContract.Presenter>(),ManuContract.View{
         }
 
     }
+
 
     override fun isActive(): Boolean {
         TODO("Not yet implemented")

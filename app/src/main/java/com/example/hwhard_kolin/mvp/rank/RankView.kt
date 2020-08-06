@@ -1,8 +1,11 @@
 package com.example.hwhard_kolin.mvp.rank
 
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.bxvip.ui.tocleanmvp.base.BaseMvpActivity
 import com.example.hwhard_kolin.R
+import com.example.hwhard_kolin.adapter.RankAdapter
+import kotlinx.android.synthetic.main.activity_rank.*
 
 class RankView : BaseMvpActivity<RankContract.Presenter>(),RankContract.View{
 
@@ -15,7 +18,8 @@ class RankView : BaseMvpActivity<RankContract.Presenter>(),RankContract.View{
     }
 
     override fun initView(p0: View?) {
-        //TODO("Not yet implemented")
+        rv_rank.layoutManager = LinearLayoutManager(this)
+        rv_rank.adapter = RankAdapter()
     }
 
     override fun isActive(): Boolean {

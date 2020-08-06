@@ -2,7 +2,12 @@
     <string name="app_name">HWhard_Kolin</string>
     <string name="account">帳號：</string>
     <string name="password">密碼：</string>
-    <string name="Name">姓名：</string>
+    <string name="rank">%1$s</string>
+    <string name="score">%1$s 分</string>
+    <string name="win">%1$s 勝</string>
+    <string name="lose">%1$s 敗</string>
+    <string name="id">ID：%1$s</string>
+    <string name="name">姓名：</string>
     <string name="school">學校：</string>
     <string name="btn_submit">提交</string>
     <string name="btn_back">返回</string>

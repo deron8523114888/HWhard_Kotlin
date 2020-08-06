@@ -4,6 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_manu"
     tools:context=".mvp.rank.RankView">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_rank"
+        android:layout_width="0dp"
+        android:padding="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_layout_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_layout_right"
+        app:layout_constraintTop_toBottomOf="@id/gl_layout_top" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_layout_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_layout_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_layout_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_layout_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,5 +42,4 @@ class ManuPagetAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_
         return 4
     }
 
-
 }

@@ -4,13 +4,18 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.hwhard_kolin.mvp.model.sharePreference.SharePreference
+import com.example.hwhard_kolin.util.CloudFireStore
 import com.example.hwhard_kolin.util.NetWork
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 
 class LoginPresenter(val mView: LoginContract.view?) :
     LoginContract.presenter {
 
     var mAccount: String? = null
     var mPassword: String? = null
+    val db = FirebaseFirestore.getInstance()
 
     init {
         mView?.setPresenter(this)
@@ -52,15 +57,28 @@ class LoginPresenter(val mView: LoginContract.view?) :
         detectAP()
     }
 
+
+    /**
+     *  登入驗證
+     */
     fun detectAP() {
 
-        // Todo 得取資料庫的帳密比對
-        if(mAccount == "1234" && mPassword == "1234"){
-            mView?.goManuView()
-        }else{
-            mView?.finishLoadingView()
-            mView?.showErrorMessage("帳號或密碼錯誤")
-        }
+        db.collection("personalData")
+            .whereEqualTo("account", mAccount)
+            .whereEqualTo("password", mPassword).limit(1).get()
+
+            .addOnSuccessListener {
+                if (it.documents.isNotEmpty()) {
+                    Log.v("db_log", it.documents[0]?.data.toString())
+                    Gson().toJson(it.documents[0]?.data)
+                    SharePreference.storePersonalData(Gson().toJson(it.documents[0]?.data))
+                    mView?.goManuView()
+                } else {
+                    mView?.finishLoadingView()
+                    mView?.showErrorMessage("帳號或密碼錯誤")
+                }
+            }
+
     }
 
 

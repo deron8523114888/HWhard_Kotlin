@@ -13,22 +13,23 @@ import android.widget.Button
 import android.widget.Toast
 import co.bxvip.ui.tocleanmvp.base.BaseMvpFragment
 import com.example.hwhard_kolin.R
+import com.example.hwhard_kolin.bean.personalBean
 import com.example.hwhard_kolin.mvp.manu.ManuView
 import com.example.hwhard_kolin.mvp.model.sharePreference.SharePreference
 import com.example.hwhard_kolin.mvp.rank.RankView
 import kotlinx.android.synthetic.main.item_personal.*
 
 class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
-    PersonalContract.View , View.OnTouchListener,View.OnClickListener{
+    PersonalContract.View, View.OnTouchListener, View.OnClickListener {
 
-    var PersonalBean = SharePreference.getPersonalData()
+    var personalBean = SharePreference.getPersonalData()
 
     override fun getLayoutResouceId(): Int {
         return R.layout.item_personal
     }
 
     override fun initPresenter() {
-        Log.v("test_","PersonalFragment_initPresenter")
+        Log.v("test_", "PersonalFragment_initPresenter")
         PersonalPresenter(this)
     }
 
@@ -36,14 +37,22 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
 
         // Todo fix Fragment 內按鈕失效
 
-        Log.v("test_","onClick")
-        if(v is Button) {
+        Log.v("test_", "onClick")
+        if (v is Button) {
             when (v.id) {
-                R.id.btn_rank -> startActivity(Intent(SharePreference.context, RankView::class.java))
-                R.id.btn_wrong_text -> Toast.makeText(SharePreference.context, "尚未有錯誤本功能", Toast.LENGTH_LONG).show()
-                R.id.btn_announcement -> Toast.makeText(SharePreference.context, "尚未有公告功能", Toast.LENGTH_LONG).show()
+                R.id.btn_rank -> startActivity(Intent(activity, RankView::class.java))
+                R.id.btn_wrong_text -> Toast.makeText(
+                    SharePreference.context,
+                    "尚未有錯誤本功能",
+                    Toast.LENGTH_LONG
+                ).show()
+                R.id.btn_announcement -> Toast.makeText(
+                    SharePreference.context,
+                    "尚未有公告功能",
+                    Toast.LENGTH_LONG
+                ).show()
                 else -> {
-                    Toast.makeText(activity,"未知按鈕",Toast.LENGTH_LONG)
+                    Toast.makeText(activity, "未知按鈕", Toast.LENGTH_LONG)
                 }
             }
         }
@@ -58,13 +67,13 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
     }
 
     override fun initView() {
-        tv_personal_name.text = PersonalBean?.mName
-        tv_personal_school.text = PersonalBean?.mSchool
-        tv_personal_id.text = PersonalBean?.mID
-        tv_personal_rank.text = PersonalBean?.mRank
-        tv_personal_score.text = PersonalBean?.mScore.toString()
-        tv_personal_win.text = PersonalBean?.mWin.toString()
-        tv_personal_lose.text = PersonalBean?.mLose.toString()
+        tv_personal_name.text = personalBean?.name
+        tv_personal_school.text = personalBean?.school
+        tv_personal_id.text = getString(R.string.id,personalBean?.id)
+        tv_personal_rank.text = getString(R.string.rank,personalBean?.rank)
+        tv_personal_score.text = getString(R.string.score,personalBean?.score.toString())
+        tv_personal_win.text = getString(R.string.win,personalBean?.win.toString())
+        tv_personal_lose.text = getString(R.string.lose,personalBean?.lose.toString())
 
 
         btn_rank.setOnClickListener(this)
@@ -87,19 +96,19 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
     }
 
     fun downAnimation(v: View?) {
-        val scale_x = ObjectAnimator.ofFloat(v, "ScaleX", 1f, 0.8f)
-        val scale_y = ObjectAnimator.ofFloat(v, "ScaleY", 1f, 0.8f)
-        val animatorSet_scale = AnimatorSet()
-        animatorSet_scale.playTogether(scale_x, scale_y)
-        animatorSet_scale.setDuration(200).start()
+        val scaleX = ObjectAnimator.ofFloat(v, "ScaleX", 1f, 0.8f)
+        val scaleY = ObjectAnimator.ofFloat(v, "ScaleY", 1f, 0.8f)
+        val animatorSetScale = AnimatorSet()
+        animatorSetScale.playTogether(scaleX, scaleY)
+        animatorSetScale.setDuration(200).start()
     }
 
     fun upAnimation(v: View?) {
-        val scale_x = ObjectAnimator.ofFloat(v, "ScaleX", 0.8f, 1f)
-        val scale_y = ObjectAnimator.ofFloat(v, "ScaleY", 0.8f, 1f)
-        val animatorSet_scale = AnimatorSet()
-        animatorSet_scale.playTogether(scale_x, scale_y)
-        animatorSet_scale.setDuration(200).start()
+        val scaleX = ObjectAnimator.ofFloat(v, "ScaleX", 0.8f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(v, "ScaleY", 0.8f, 1f)
+        val animatorSetScale = AnimatorSet()
+        animatorSetScale.playTogether(scaleX, scaleY)
+        animatorSetScale.setDuration(200).start()
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {

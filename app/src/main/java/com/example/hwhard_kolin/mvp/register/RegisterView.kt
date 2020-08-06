@@ -3,6 +3,7 @@ package com.example.hwhard_kolin.mvp.register
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
@@ -10,14 +11,17 @@ import co.bxvip.ui.tocleanmvp.base.BaseMvpActivity
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
 import com.example.hwhard_kolin.R
+import com.example.hwhard_kolin.bean.personalBean
 import com.example.hwhard_kolin.mvp.login.LoginView
+import com.example.hwhard_kolin.util.CloudFireStore
 import kotlinx.android.synthetic.main.activity_register_view.*
 
-class RegisterView : BaseMvpActivity<RegisterContract.presenter>(),RegisterContract.view,View.OnClickListener,View.OnTouchListener {
+class RegisterView : BaseMvpActivity<RegisterContract.presenter>(), RegisterContract.view,
+    View.OnClickListener, View.OnTouchListener {
 
-    var country : MutableList<String> ?= null
-    var city : MutableList<MutableList<String>> ?= null
-    var school : MutableList<MutableList<MutableList<String>>> ?= null
+    var country: MutableList<String>? = null
+    var city: MutableList<MutableList<String>>? = null
+    var school: MutableList<MutableList<MutableList<String>>>? = null
 
     override fun initPresenter() {
         RegisterPresenter(this)
@@ -50,25 +54,32 @@ class RegisterView : BaseMvpActivity<RegisterContract.presenter>(),RegisterContr
 
         country = mutableListOf("台灣")
         city = mutableListOf(resources.getStringArray(R.array.city).toMutableList())
-        school = mutableListOf(mutableListOf(
-            resources.getStringArray(R.array.Keelung).toMutableList(),
-            resources.getStringArray(R.array.Taipei).toMutableList(),
-            resources.getStringArray(R.array.New_Taipei).toMutableList(),
-            resources.getStringArray(R.array.Taoyuan).toMutableList(),
-            resources.getStringArray(R.array.Hsinchu_County).toMutableList(),
-            resources.getStringArray(R.array.Hsinchu).toMutableList(),
-            resources.getStringArray(R.array.Miaoli).toMutableList(),
-            resources.getStringArray(R.array.Taichung).toMutableList(),
-            resources.getStringArray(R.array.Changhua).toMutableList(),
-            resources.getStringArray(R.array.Nantou).toMutableList(),
-            resources.getStringArray(R.array.Yunlin).toMutableList(),
-            resources.getStringArray(R.array.Chiayi_County).toMutableList(),
-            resources.getStringArray(R.array.Chiayi).toMutableList(),
-            resources.getStringArray(R.array.Tainan).toMutableList(),
-            resources.getStringArray(R.array.Kaohsiung).toMutableList(),
-            resources.getStringArray(R.array.Pingtung).toMutableList()))
+        school = mutableListOf(
+            mutableListOf(
+                resources.getStringArray(R.array.Keelung).toMutableList(),
+                resources.getStringArray(R.array.Taipei).toMutableList(),
+                resources.getStringArray(R.array.New_Taipei).toMutableList(),
+                resources.getStringArray(R.array.Taoyuan).toMutableList(),
+                resources.getStringArray(R.array.Hsinchu_County).toMutableList(),
+                resources.getStringArray(R.array.Hsinchu).toMutableList(),
+                resources.getStringArray(R.array.Miaoli).toMutableList(),
+                resources.getStringArray(R.array.Taichung).toMutableList(),
+                resources.getStringArray(R.array.Changhua).toMutableList(),
+                resources.getStringArray(R.array.Nantou).toMutableList(),
+                resources.getStringArray(R.array.Yunlin).toMutableList(),
+                resources.getStringArray(R.array.Chiayi_County).toMutableList(),
+                resources.getStringArray(R.array.Chiayi).toMutableList(),
+                resources.getStringArray(R.array.Tainan).toMutableList(),
+                resources.getStringArray(R.array.Kaohsiung).toMutableList(),
+                resources.getStringArray(R.array.Pingtung).toMutableList()
+            )
+        )
 
         // endregion
+    }
+
+    override fun showToastMessage(message: String) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
     override fun isActive(): Boolean {
@@ -81,20 +92,27 @@ class RegisterView : BaseMvpActivity<RegisterContract.presenter>(),RegisterContr
 
     override fun onClick(v: View?) {
 
-        when(v){
+        when (v) {
 
 
             btn_submit -> {
 
                 // Todo 先跟 Model 拿所有帳號
                 // Todo 判斷資料庫是否有相同帳號
-                // Todo 寫入資料庫
+                val mAccount = ev_account.text.toString()
+                val mPassword = ev_password.text.toString()
+                val mName = ev_name.text.toString()
+                val mSchool = tv_school.text.toString()
+
+
+                mPresenter.regist(mAccount, mPassword, mName, mSchool)
+
 
             }
 
             btn_back_to_login -> {
 
-                startActivity(Intent(this,LoginView::class.java))
+                startActivity(Intent(this, LoginView::class.java))
                 finish()
             }
 
@@ -107,7 +125,7 @@ class RegisterView : BaseMvpActivity<RegisterContract.presenter>(),RegisterContr
                                 school?.get(option1)?.get(option2)?.get(options3)
 
                         tv_school.setText(school?.get(option1)?.get(option2)?.get(options3))
-                        Toast.makeText(this,"選擇："+tx,Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "選擇：" + tx, Toast.LENGTH_LONG).show()
                     }).build<String>()
 
                 pvOptions.setPicker(country, city, school)
@@ -117,7 +135,7 @@ class RegisterView : BaseMvpActivity<RegisterContract.presenter>(),RegisterContr
         }
     }
 
-    fun dwonAnimation(v:View?){
+    fun dwonAnimation(v: View?) {
         val scale_x = ObjectAnimator.ofFloat(v, "ScaleX", 1f, 0.8f)
         val scale_y = ObjectAnimator.ofFloat(v, "ScaleY", 1f, 0.8f)
         val animatorSet_scale = AnimatorSet()
@@ -125,7 +143,7 @@ class RegisterView : BaseMvpActivity<RegisterContract.presenter>(),RegisterContr
         animatorSet_scale.setDuration(200).start()
     }
 
-    fun upAnimation(v:View?){
+    fun upAnimation(v: View?) {
         val scale_x = ObjectAnimator.ofFloat(v, "ScaleX", 0.8f, 1f)
         val scale_y = ObjectAnimator.ofFloat(v, "ScaleY", 0.8f, 1f)
         val animatorSet_scale = AnimatorSet()

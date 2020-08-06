@@ -5,16 +5,18 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import co.bxvip.ui.tocleanmvp.base.BaseMvpActivity
-import com.example.hwhard_kolin.PersonalBean
 import com.example.hwhard_kolin.R
+import com.example.hwhard_kolin.bean.personalBean
 import com.example.hwhard_kolin.mvp.manu.ManuView
 import com.example.hwhard_kolin.mvp.model.sharePreference.SharePreference
 import com.example.hwhard_kolin.mvp.register.RegisterView
+import com.example.hwhard_kolin.util.CloudFireStore
 import com.example.hwhard_kolin.util.NetWork
 import kotlinx.android.synthetic.main.activity_login_view.*
 
@@ -23,10 +25,12 @@ class LoginView : BaseMvpActivity<LoginContract.presenter>(), LoginContract.view
 
 
     override fun initPresenter() {
+        Log.v("test__", "initPresenter")
         LoginPresenter(this)
     }
 
     override fun bindLayout(): Int {
+        Log.v("test__", "bindLayout")
         return R.layout.activity_login_view
     }
 
@@ -41,7 +45,6 @@ class LoginView : BaseMvpActivity<LoginContract.presenter>(), LoginContract.view
                 }
                 R.id.bt_register -> {
                     startActivity(Intent(this, RegisterView::class.java))
-                    finish()
                 }
                 else -> {
                     Toast.makeText(this, "None", Toast.LENGTH_SHORT).show()
@@ -53,12 +56,10 @@ class LoginView : BaseMvpActivity<LoginContract.presenter>(), LoginContract.view
 
     override fun initView(p0: View?) {
 
-        val personalBean = PersonalBean("1234", "1234", "Deron", "國立高雄中學", "758",
-            "乙級", 95, 772, 361)
 
         // 初始化 SharePreference
         SharePreference.initContext(this)
-        SharePreference.storePersonalData(personalBean)
+//        SharePreference.storePersonalData(personalBean)
 
 
         bt_login.let {
@@ -111,20 +112,20 @@ class LoginView : BaseMvpActivity<LoginContract.presenter>(), LoginContract.view
     }
 
 
-    fun downAnimation(v: View?) {
-        val scale_x = ObjectAnimator.ofFloat(v, "ScaleX", 1f, 0.8f)
-        val scale_y = ObjectAnimator.ofFloat(v, "ScaleY", 1f, 0.8f)
-        val animatorSet_scale = AnimatorSet()
-        animatorSet_scale.playTogether(scale_x, scale_y)
-        animatorSet_scale.setDuration(200).start()
+    private fun downAnimation(v: View?) {
+        val scaleX = ObjectAnimator.ofFloat(v, "ScaleX", 1f, 0.8f)
+        val scaleY = ObjectAnimator.ofFloat(v, "ScaleY", 1f, 0.8f)
+        val animatorSetScale = AnimatorSet()
+        animatorSetScale.playTogether(scaleX, scaleY)
+        animatorSetScale.setDuration(200).start()
     }
 
-    fun upAnimation(v: View?) {
-        val scale_x = ObjectAnimator.ofFloat(v, "ScaleX", 0.8f, 1f)
-        val scale_y = ObjectAnimator.ofFloat(v, "ScaleY", 0.8f, 1f)
-        val animatorSet_scale = AnimatorSet()
-        animatorSet_scale.playTogether(scale_x, scale_y)
-        animatorSet_scale.setDuration(200).start()
+    private fun upAnimation(v: View?) {
+        val scaleX = ObjectAnimator.ofFloat(v, "ScaleX", 0.8f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(v, "ScaleY", 0.8f, 1f)
+        val animatorSetScale = AnimatorSet()
+        animatorSetScale.playTogether(scaleX, scaleY)
+        animatorSetScale.setDuration(200).start()
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -141,6 +142,4 @@ class LoginView : BaseMvpActivity<LoginContract.presenter>(), LoginContract.view
 
         return super.onTouchEvent(event)
     }
-
-
 }
