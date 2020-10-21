@@ -17,9 +17,7 @@ class StudyFragment : BaseMvpFragment<StudyContract.Presenter>(),
     }
 
     override fun isActive(): Boolean {
-
-        // Todo 判斷
-        return true
+        return mActivity.isFinishing
     }
 
     override fun setPresenter(p0: StudyContract.Presenter?) {

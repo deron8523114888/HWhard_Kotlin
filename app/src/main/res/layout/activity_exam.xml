@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Answer_Guide_herizon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/blackboard"
+        app:layout_constraintBottom_toTopOf="@id/Answer_Guide_herizon1"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Answer_black_herizon2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Answer_black_herizon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Answer_balck_vertical1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/hanyisentytang"
+            android:gravity="center_vertical"
+            android:text="null"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_question_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="1/5"
+            android:textColor="@android:color/white"
+            android:textSize="26sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="10sp"
+            android:fontFamily="@font/hanyisentytang"
+            android:gravity="center_vertical"
+            android:text="null"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_question"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/Answer_black_herizon2"
+            app:layout_constraintTop_toBottomOf="@id/tv_question_num" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/Answer_balck_vertical1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Answer_black_herizon2">
+
+            <TextView
+                android:id="@+id/Text_Ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sentychalk"
+                android:gravity="center"
+                android:text="Ans："
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_answer_mid"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/question_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hanyisentytang"
+                android:shadowColor="@android:color/background_light"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/Text_Ans"
+                app:layout_constraintRight_toRightOf="@id/Text_Ans"
+                app:layout_constraintTop_toBottomOf="@id/Text_Ans" />
+
+            <TextView
+                android:id="@+id/tv_answer_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sentychalk"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_answer_mid"
+                app:layout_constraintLeft_toLeftOf="@id/tv_answer_mid"
+                app:layout_constraintRight_toRightOf="@id/tv_answer_mid"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_answer_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sentychalk"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_answer_bottom"
+                app:layout_constraintLeft_toRightOf="@id/Text_Ans"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_answer_top" />
+
+            <TextView
+                android:id="@+id/tv_answer_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sentychalk"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/tv_answer_mid"
+                app:layout_constraintRight_toRightOf="@id/tv_answer_mid"
+                app:layout_constraintTop_toBottomOf="@id/tv_answer_mid" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginBottom="10sp"
+        app:layout_constraintBottom_toTopOf="@id/cl_table">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5" />
+
+        <TextView
+            android:id="@+id/bot_1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/vp_bot_select" />
+
+        <TextView
+            android:id="@+id/bot_2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/vp_bot_unselect" />
+
+        <TextView
+            android:id="@+id/bot_3"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/vp_bot_unselect" />
+
+        <TextView
+            android:id="@+id/bot_4"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/vp_bot_unselect" />
+
+        <TextView
+            android:id="@+id/bot_5"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/vp_bot_unselect" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5" />
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_table"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/exam_table"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Answer_Guide_herizon1">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Answer_table_herizon_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Answer_table_herizon_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/eraser_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_submit"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_2" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/submit"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="交卷"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_2" />
+
+        <Button
+            android:id="@+id/num_1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="1"
+            android:textSize="45sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/num_2"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_1" />
+
+        <Button
+            android:id="@+id/num_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="2"
+            android:textSize="45sp"
+            app:layout_constraintLeft_toRightOf="@id/num_1"
+            app:layout_constraintRight_toLeftOf="@id/num_3"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_1" />
+
+        <Button
+            android:id="@+id/num_3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="3"
+            android:textSize="45sp"
+            app:layout_constraintLeft_toRightOf="@id/num_2"
+            app:layout_constraintRight_toLeftOf="@id/num_4"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_1" />
+
+        <Button
+            android:id="@+id/num_4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="4"
+            android:textSize="45sp"
+            app:layout_constraintLeft_toRightOf="@id/num_3"
+            app:layout_constraintRight_toLeftOf="@id/num_5"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_1" />
+
+        <Button
+            android:id="@+id/num_5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="5"
+            android:textSize="45sp"
+            app:layout_constraintLeft_toRightOf="@id/num_4"
+            app:layout_constraintRight_toLeftOf="@id/num_6"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_1" />
+
+        <Button
+            android:id="@+id/num_6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="6"
+            android:textSize="45sp"
+            app:layout_constraintLeft_toRightOf="@id/num_5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Answer_table_herizon_1" />
+
+        <Button
+            android:id="@+id/num_7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="7"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toTopOf="@id/Answer_table_herizon_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/num_8" />
+
+        <Button
+            android:id="@+id/num_8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="8"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toTopOf="@id/Answer_table_herizon_2"
+            app:layout_constraintLeft_toRightOf="@id/num_7"
+            app:layout_constraintRight_toLeftOf="@id/num_9" />
+
+        <Button
+            android:id="@+id/num_9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="9"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toTopOf="@id/Answer_table_herizon_2"
+            app:layout_constraintLeft_toRightOf="@id/num_8"
+            app:layout_constraintRight_toLeftOf="@id/num_0" />
+
+        <Button
+            android:id="@+id/num_0"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="0"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toTopOf="@id/Answer_table_herizon_2"
+            app:layout_constraintLeft_toRightOf="@id/num_9"
+            app:layout_constraintRight_toLeftOf="@id/num_add_and_minus" />
+
+        <Button
+            android:id="@+id/num_add_and_minus"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="±"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toTopOf="@id/Answer_table_herizon_2"
+            app:layout_constraintLeft_toRightOf="@id/num_0"
+            app:layout_constraintRight_toLeftOf="@id/num_minus" />
+
+        <Button
+            android:id="@+id/num_minus"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/num_back"
+            android:fontFamily="@font/hanyisentytang"
+            android:text="-"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toTopOf="@id/Answer_table_herizon_2"
+            app:layout_constraintLeft_toRightOf="@id/num_add_and_minus"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_buttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <ProgressBar
+        android:id="@+id/pb_loding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

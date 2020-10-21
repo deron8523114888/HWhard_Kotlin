@@ -20,78 +20,64 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_title_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_title_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_layout_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.8" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_exam_btn_bottom"
+
+    <Button
+        android:id="@+id/btn_choose"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_exam_title"
+        android:text="選擇考試模式"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/gl_title_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_layout_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_layout_right"
+        app:layout_constraintTop_toBottomOf="@id/gl_title_top" />
+
+    <TextView
+        android:id="@+id/tv_show_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-
-    <Button
-        android:id="@+id/btn_chapter_practice"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/btn_exam_title"
-        android:text="章節練習"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_GSAT"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="請選擇一種考試模式"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/gl_layout_left"
-        app:layout_constraintRight_toLeftOf="@id/btn_whole_book_practice"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/btn_whole_book_practice"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/btn_exam_title"
-        android:text="全冊練習"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_rank"
-        app:layout_constraintLeft_toRightOf="@id/btn_chapter_practice"
         app:layout_constraintRight_toLeftOf="@id/gl_layout_right"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@id/gl_title_bottom" />
 
     <Button
-        android:id="@+id/btn_GSAT"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/btn_exam_title"
-        android:text="學測練習"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/gl_exam_btn_bottom"
+        android:id="@+id/btn_start_exam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="開 始 考 試"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:background="@drawable/bg_confirm"
+        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
         app:layout_constraintLeft_toRightOf="@id/gl_layout_left"
-        app:layout_constraintRight_toLeftOf="@id/btn_rank"
-        app:layout_constraintTop_toBottomOf="@id/btn_chapter_practice" />
-
-
-    <Button
-        android:id="@+id/btn_rank"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/btn_exam_title"
-        android:text="個人牌位"
-        android:textSize="20dp"
-
-        app:layout_constraintBottom_toTopOf="@id/gl_exam_btn_bottom"
-        app:layout_constraintLeft_toRightOf="@id/btn_GSAT"
         app:layout_constraintRight_toLeftOf="@id/gl_layout_right"
-        app:layout_constraintTop_toBottomOf="@id/btn_whole_book_practice" />
-
+        android:textSize="20sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

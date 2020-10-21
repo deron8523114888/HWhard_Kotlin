@@ -8,64 +8,15 @@
 
     <ImageView
         android:id="@+id/iv_hard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30sp"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toTopOf="@id/gl_imagebot"
         app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
         app:layout_constraintRight_toLeftOf="@id/gl_imageright"
         app:layout_constraintTop_toBottomOf="@id/gl_imagetop" />
 
-    <TextView
-        android:id="@+id/tv_bg_account_password"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
-        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
-        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
-        app:layout_constraintTop_toBottomOf="@id/gl_layout_top" />
-
-    <TextView
-        android:id="@+id/tv_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/account"
-        android:textSize="28dp"
-        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
-        app:layout_constraintTop_toBottomOf="@id/gl_layout_top" />
-
-    <TextView
-        android:id="@+id/tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/password"
-        android:textSize="28dp"
-        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
-        app:layout_constraintTop_toBottomOf="@id/tv_account" />
-
-
-    <EditText
-        android:id="@+id/et_account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_account"
-        app:layout_constraintLeft_toRightOf="@id/tv_account"
-        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
-        app:layout_constraintTop_toTopOf="@id/tv_account" />
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_password"
-        app:layout_constraintLeft_toRightOf="@id/tv_password"
-        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
-        app:layout_constraintTop_toTopOf="@id/tv_password" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_imagetop"
@@ -79,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_imageleft"
@@ -95,51 +46,163 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.8" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_layout_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_layout_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.9" />
 
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/btn_join_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_login"
-        android:textSize="22dp"
+        android:background="@drawable/bg_confirm"
+        android:paddingLeft="40dp"
+        android:paddingTop="20sp"
+        android:paddingRight="40dp"
+        android:paddingBottom="20sp"
+        android:text="進 入 遊 戲"
+        android:textSize="24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
         app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
-        app:layout_constraintRight_toLeftOf="@id/bt_register"
-        app:layout_constraintTop_toBottomOf="@id/gl_layout_bottom" />
+        app:layout_constraintRight_toLeftOf="@id/gl_imageright"
+        app:layout_constraintTop_toBottomOf="@id/gl_imagebot" />
 
-
-    <Button
-        android:id="@+id/bt_register"
+    <TextView
+        android:id="@+id/tv_back_to_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_register"
-        android:textSize="22dp"
-        app:layout_constraintLeft_toRightOf="@id/bt_login"
+        android:layout_marginTop="50dp"
+        android:autoLink="all"
+        android:text="回到登入畫面"
+        android:textColor="@android:color/holo_blue_dark"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/btn_join_game"
+        app:layout_constraintRight_toRightOf="@id/btn_join_game"
+        app:layout_constraintTop_toBottomOf="@id/btn_join_game" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_regist_UI"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/gl_layout_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_imageleft"
         app:layout_constraintRight_toLeftOf="@id/gl_imageright"
-        app:layout_constraintTop_toBottomOf="@id/gl_layout_bottom" />
+        app:layout_constraintTop_toBottomOf="@id/gl_imagebot">
+
+        <RelativeLayout
+            android:id="@+id/btn_line"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30sp"
+            android:background="@drawable/bg_btn_line">
+
+            <ImageView
+                android:id="@+id/iv_line"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_alignParentStart="true"
+                android:padding="3dp"
+                android:src="@drawable/ic_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_line"
+                android:gravity="center"
+                android:paddingEnd="10dp"
+                android:text="Log in"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_fb"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30sp"
+            android:background="@drawable/bg_btn_fb">
+
+            <ImageView
+                android:id="@+id/iv_fb"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_alignParentStart="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_fb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_fb"
+                android:gravity="center"
+                android:paddingEnd="10dp"
+                android:text="Log in"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/btn_gmail"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30sp"
+            android:background="@drawable/bg_btn_gmail">
+
+            <ImageView
+                android:id="@+id/iv_ig"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_alignParentStart="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_gmail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_ig"
+                android:gravity="center"
+                android:paddingEnd="10dp"
+                android:text="Log in"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
 
     <ProgressBar
         android:id="@+id/pb_loding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

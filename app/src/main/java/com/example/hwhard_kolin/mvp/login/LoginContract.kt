@@ -1,26 +1,44 @@
 package com.example.hwhard_kolin.mvp.login
 
 import android.app.Activity
+import android.app.Person
 import co.bxvip.ui.tocleanmvp.base.BasePresenter
 import co.bxvip.ui.tocleanmvp.base.BaseView
+import com.example.hwhard_kolin.bean.PersonalBean
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import javax.security.auth.callback.Callback
 
-interface LoginContract{
+interface LoginContract {
 
-    interface view:BaseView<presenter>{
+    interface View : BaseView<Presenter> {
 
-        fun showErrorMessage(error:String)
+        fun showErrorMessage(error: String)
 
-        fun goManuView()
+        fun UiState(canJoinGame: Boolean)
 
-        fun startLoadingView()
+        fun goToManu()
+
+        fun showLoadingView()
 
         fun finishLoadingView()
+
+        fun showSchoolDialog()
+
+        fun getAct(): Activity
     }
 
-    interface presenter : BasePresenter{
+    interface Presenter : BasePresenter {
 
-        fun detectLogin(account:String, password:String)
+        fun loginToLine()
 
+        fun loginToFB(callback: CallbackManager)
+
+        fun loginToGmail()
+
+        fun detectIsAccountExsit(ID: String, loginType: String)
+
+        fun writeToDB(personalBean: PersonalBean)
     }
 
 }

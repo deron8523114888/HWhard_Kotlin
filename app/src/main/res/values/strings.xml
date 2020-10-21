@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">HWhard_Kolin</string>
+    <string name="facebook_app_id">645677866056917</string
+        > <string name="fb_login_protocol_scheme">fb645677866056917</string>
     <string name="account">帳號：</string>
     <string name="password">密碼：</string>
     <string name="rank">%1$s</string>
@@ -9,10 +11,16 @@
     <string name="id">ID：%1$s</string>
     <string name="name">姓名：</string>
     <string name="school">學校：</string>
-    <string name="btn_submit">提交</string>
-    <string name="btn_back">返回</string>
+    <string name="confirm">確認</string>
+    <string name="back">返回</string>
     <string name="btn_login">登入</string>
     <string name="btn_register">註冊</string>
+    <string name="announcement_title_1">最新訊息</string>
+    <string name="announcement_title_2">LINE &amp; FB</string>
+    <string name="announcement_title_3">關於我們</string>
+    <string name="announcemetn_content_1">積分：\n由於題庫尚未充足，目前積分模式最高開放到丙級，更高牌位開放時間另行公告通知\n\n範圍：\n目前各冊範圍依照103課綱為主，90%的題目也都適用於108課綱考生，將於2021年學測後全面更改為108課綱</string>
+    <string name="announcemetn_content_2">LINE：@767roall\nFB：https://www.facebook.com/HWNan/?modal=admin_todo_tour\n\n介紹：\n加入LINE官方帳號可以隨時詢問APP內遇到的題目，相關人員將為您解答</string>
+    <string name="announcemetn_content_3">設計理念：\n\n希望數學可以是一種遊戲：\n一起享受找答案的過程，學習討論、交流，最後享受破解的成就感。\n\n\陪伴大家在數學裡成長：\n希望在這裡找到與你程度相當的題目，然後按照自己的步調，慢慢成長，學會更難、更複雜的知識。\n\n總之，讓我們一起找答案吧！</string>
 
     <string-array name="city">
         <item>基隆市</item>
@@ -415,6 +423,69 @@
         <item>私立美和高中</item>
         <item>私立陸興高中</item>
         <item>私立屏榮高中</item>
+    </string-array>
+
+
+    <string-array name="Type1">
+        <item>第一冊</item>
+        <item>第二冊</item>
+        <item>第三冊(A)</item>
+        <item>第三冊(B)</item>
+        <item>第四冊(A)</item>
+        <item>第四冊(B)</item>
+    </string-array>
+
+    <string-array name="book1">
+        <item>數與式</item>
+        <item>直線與圓</item>
+        <item>多項式函數</item>
+    </string-array>
+
+    <string-array name="book2">
+        <item>三角比</item>
+        <item>數列與級數</item>
+        <item>數據分析</item>
+        <item>排列組合與機率</item>
+    </string-array>
+
+
+    <string-array name="book3a">
+        <item>三角函數</item>
+        <item>指數與對數</item>
+        <item>平面向量</item>
+    </string-array>
+
+
+    <string-array name="book3b">
+        <item>三角週期現象</item>
+        <item>按比例成長模型</item>
+        <item>平面向量</item>
+    </string-array>
+
+
+    <string-array name="book4a">
+        <item>空間向量</item>
+        <item>空間中的直線與平面</item>
+        <item>條件機率與貝式定理</item>
+        <item>矩陣</item>
+    </string-array>
+
+
+    <string-array name="book4b">
+        <item>高二下尚未出版</item>
+        <item>高二下尚未出版</item>
+        <item>高二下尚未出版</item>
+        <item>高二下尚未出版</item>
+    </string-array>
+
+
+    <string-array name="Type3">
+        <item>學測練習</item>
+    </string-array>
+
+
+    <string-array name="Type4">
+        <item>個人積分</item>
     </string-array>
 
 </resources>
