@@ -12,10 +12,12 @@ import bolts.Task
 import co.bxvip.ui.tocleanmvp.base.BaseMvpActivity
 import com.bumptech.glide.Glide
 import com.example.hwhard_kolin.R
+import com.example.hwhard_kolin.bean.AnswerBean
 import com.example.hwhard_kolin.bean.PersonalBean
 import com.example.hwhard_kolin.dialog.SchoolDialog
 import com.example.hwhard_kolin.mvp.manu.ManuView
 import com.example.hwhard_kolin.util.*
+import com.example.hwhard_kolin.util.answer.A_condition_probabiility
 import com.facebook.*
 import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginManager
@@ -55,13 +57,18 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
     }
 
     override fun initView(p0: View?) {
-
+        // 新增題目使用
+//        CloudFireStore.newQuestion(
+//            chapter = "A_condition_probability", degree = "E", answer = A_condition_probabiility(), answerBean = AnswerBean(
+//                type = "Int",
+//                answerTop = "-11",
+//                answerBottom = ""
+//            )
+//        )
     }
 
     override fun onClick(v: View?) {
-
         when (v) {
-
             btn_line -> {
                 if (!NetWork.detectNetWork()) {
                     showErrorMessage("網路不穩，請檢查網路")
@@ -91,8 +98,6 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
                     mPresenter.loginToFB(callBack)
                 }
             }
-
-
             btn_gmail -> {
                 if (!NetWork.detectNetWork()) {
                     showErrorMessage("網路不穩，請檢查網路")
@@ -199,6 +204,7 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
                         showErrorMessage("無權限登入")
                     }
                     else -> {
+                        Log.v("test__",result.responseCode.toString());
                         showErrorMessage("LINE登入 - 未知錯誤")
                     }
                 }

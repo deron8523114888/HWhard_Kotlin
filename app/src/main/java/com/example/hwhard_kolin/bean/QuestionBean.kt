@@ -8,6 +8,8 @@ data class QuestionList(
 
 data class QuestionBean(
     var chapter: String = "",
+    var degree: String = "",
+    var questionNumber: String = "",
     var num: String = "",
     var type: String = "",
     var answerTop: String = "",
@@ -15,3 +17,13 @@ data class QuestionBean(
     var myAnswerTop: String = "",
     var myAnswerBottom: String = ""
 ) : Serializable
+
+data class AnswerBean(
+    var type: String = "",
+    var answerTop: String = "",
+    var answerBottom: String = ""
+) : Serializable
+
+data class Permutation(
+    var E:Int = 6
+)

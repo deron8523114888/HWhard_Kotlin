@@ -3,4 +3,6 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="levelUp">#28FF28</color>
+    <color name="levelDown">#FF2D2D</color>
 </resources>

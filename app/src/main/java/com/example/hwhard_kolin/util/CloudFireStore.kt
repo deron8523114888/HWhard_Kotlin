@@ -1,12 +1,14 @@
 package com.example.hwhard_kolin.util
 
 import android.util.Log
-import com.example.hwhard_kolin.bean.QuestionBean
-import com.example.hwhard_kolin.bean.QuestionList
-import com.example.hwhard_kolin.bean.RankBean
+import android.widget.Toast
+import com.example.hwhard_kolin.bean.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.gson.Gson
+import org.spongycastle.asn1.x509.sigi.PersonalData
+
 
 object CloudFireStore {
 
@@ -27,32 +29,42 @@ object CloudFireStore {
                 }
             }
             .addOnFailureListener {
-                fail("讀取伺服器狀態失敗")
+                fail("讀取資料庫失敗，請聯繫客服")
             }
     }
 
-    fun loginCheck(
-        mAccount: String,
-        mPassword: String,
-        success: (personalData: String) -> Unit,
-        fail: (msg: String) -> Unit
-    ) {
-        db.collection("personalData")
-            .whereEqualTo("account", mAccount)
-            .whereEqualTo("password", mPassword)
-            .get()
+    /**
+     *  檢查積分系統是否開啟
+     */
+    fun rankCheck(success: () -> Unit, fail: (msg: String) -> Unit) {
+        db.collection("SystemInfo").document("lVbZb1umHo2A0LVQcLyI").get()
             .addOnSuccessListener {
-                if (it.documents.isEmpty()) {
-                    fail("帳號或密碼錯誤")
-                    return@addOnSuccessListener
+                val rankIsOpen = it.data?.get("RankIsOpen")
+                if (rankIsOpen == "1") {
+                    success()
+                } else {
+                    fail("積分模式維修中,詳細請查看公告")
                 }
-                Log.v("personalData", it.documents.first().data.toString())
-                success(it.documents.first().data.toString())
             }
             .addOnFailureListener {
-                fail("無法連到資料庫")
+                fail("讀取資料庫失敗，請聯繫客服")
             }
     }
+
+    /**
+     *  取得公告內容
+     */
+    fun getAnnouncement(response: (content: String) -> Unit) {
+        db.collection("SystemInfo").document("Mljt1JpJw4T2KPAwnjOF").get()
+            .addOnSuccessListener {
+                val content = it.data?.get("content").toString()
+                response(content)
+            }
+            .addOnFailureListener {
+                response("讀取公告失敗，請聯繫客服")
+            }
+    }
+
 
     /**
      * 取得排行榜資料
@@ -85,28 +97,108 @@ object CloudFireStore {
     }
 
     /**
-     *  隨機取得五題題目資料
-     *  【章節】【類型】【答案】
+     *  【章節練習】
      */
-    // Todo 隨機機制
-    fun getRandomQuestionToSP(callBack: (questionList: QuestionList) -> Unit) {
-        val questionList = mutableListOf<QuestionBean>()
-        db.collection("chapter1").limit(5).get()
-            .addOnSuccessListener {
-                it.documents.forEach { document ->
-                    val questionBean = QuestionBean(
-                        chapter = "chapter1",
-                        num = document.id,
-                        type = document.data?.get("type").toString(),
-                        answerTop = document.data?.get("answerTop").toString(),
-                        answerBottom = document.data?.get("answerBottom").toString()
-                    )
-                    questionList.add(questionBean)
+    fun getChapterQuestion(
+        chapter: String, rank: Int,
+        success: (questionList: QuestionList) -> Unit,
+        fail: (msg: String) -> Unit
+    ) {
+        // 最後送出的題目 list
+        val resultList = mutableListOf<QuestionBean>()
+
+        val questionInfo = rank.getDegreeAndNum()
+        if (questionInfo.degree1.isNotEmpty()) {
+            db.collection("Question").document(chapter).get()
+                .addOnSuccessListener { q1 ->
+
+                    // 第一難度的答案 list
+                    val answer1 = q1.data?.get(questionInfo.degree1) as Map<*, *>
+                    if (answer1.size < questionInfo.num1) {
+                        fail("題庫數量不足，請聯繫客服")
+                        return@addOnSuccessListener
+                    }
+                    // 藉由題庫數量取得 random 題號
+                    val randonList1 = answer1.size.getFiveRandom()
+
+                    // 將資料庫取得的題目 對照 random 題號挑出，並加入 questionList
+                    for (i in 0 until questionInfo.num1) {
+                        val k = answer1["3"].toString()
+                        Gson().fromJson(
+                            answer1[randonList1[i].toString()].toString(),
+                            AnswerBean::class.java
+                        ).run {
+                            val questionBean = QuestionBean(
+                                chapter = chapter,
+                                degree = questionInfo.degree1,
+                                num = randonList1[i].toString(),
+                                type = type,
+                                answerTop = answerTop,
+                                answerBottom = answerBottom
+                            )
+                            resultList.add(questionBean)
+                        }
+                    }
+
+                    success(QuestionList(resultList))
+
+                    // Todo 取得第二難度的題目
                 }
-                callBack(QuestionList(questionList))
+                .addOnFailureListener {
+                    fail("連接資料庫失敗")
+                }
+        }
+    }
+
+
+    fun getVolumerQuestion(
+        chapter: String, rank: Int,
+        success: (questionList: QuestionList) -> Unit,
+        fail: (msg: String) -> Unit
+    ) {
+        db.collection("Question").whereEqualTo("a", "1").get()
+            .addOnSuccessListener {
+                for (i in 0 until it.documents.size) {
+                    Log.v("Question", it.documents[i].id)
+                }
             }
             .addOnFailureListener {
-                Log.v("Question", "fail")
+                fail("連線資料庫失敗，請聯繫客服")
+            }
+    }
+
+
+    /**
+     *  新增答案
+     */
+    fun newQuestion(
+        chapter: String,
+        degree: String,
+        answer: Map<String, Map<String, String>>,
+        answerBean: AnswerBean
+    ) {
+        db.collection("Question").document(chapter).update(degree, answer)
+            .addOnSuccessListener { }
+            .addOnFailureListener { }
+    }
+
+    /**
+     *  更新個人資料
+     */
+    fun updatePersonalData(personalBean: PersonalBean) {
+        db.collection("personalData")
+            .document(personalBean.id)
+            .update(
+                "rank", personalBean.rank,
+                "score", personalBean.score,
+                "win", personalBean.win,
+                "lose", personalBean.lose
+            )
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener {
+
             }
     }
 }

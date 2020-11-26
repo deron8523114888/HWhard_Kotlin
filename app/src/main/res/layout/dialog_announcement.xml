@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/announcement_frame"
@@ -80,15 +80,15 @@
             android:id="@+id/announcement_content_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:autoLink="web"
             android:fontFamily="@font/hanyisentytang"
-            android:text="@string/announcemetn_content_1"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            android:autoLink="web"
             app:layout_constraintBottom_toTopOf="@id/announcement_content_bottom"
             app:layout_constraintLeft_toRightOf="@id/announcement_content_left"
             app:layout_constraintRight_toLeftOf="@id/announcement_content_right"
-            app:layout_constraintTop_toBottomOf="@id/announcement_content_top" />
+            app:layout_constraintTop_toBottomOf="@id/announcement_content_top"
+            tools:text="@string/announcemetn_content_1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/announcement_title_top"
@@ -139,27 +139,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/announcement_vertical_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bl_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84"/>
+        app:layout_constraintGuide_percent="0.84" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

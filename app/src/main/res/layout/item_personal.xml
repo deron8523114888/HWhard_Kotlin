@@ -51,146 +51,139 @@
         app:layout_constraintTop_toBottomOf="@id/gl_layout_top">
 
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+
+            <com.example.hwhard_kolin.util.CircleImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/empty_icon"
+                android:layout_marginStart="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_personal_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_personal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_personal_data_top"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_personal_school"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon"
+                tools:text="王小明" />
+
+            <TextView
+                android:id="@+id/tv_personal_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_personal_data_top"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@id/iv_rank"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_personal_name"
+                tools:text="國立三重高中" />
 
             <ImageView
                 android:id="@+id/iv_rank"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:src="@drawable/rank_3" />
+                android:src="@drawable/empty_icon"
+                app:layout_constraintBottom_toTopOf="@id/tv_personal_score"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_personal_school" />
 
+            <TextView
+                android:id="@+id/tv_personal_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/ll_win_lose"
+                android:background="@drawable/bg_personal_data_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_personal_rank"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_rank"
+                tools:text="66 分" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_personal_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_personal_data_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/ll_win_lose"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_personal_score"
+                tools:text="乙級" />
 
-                <LinearLayout
-                    android:id="@+id/ll_win_lose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg_personal_data_bottom"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-
-                    <TextView
-                        android:id="@+id/tv_personal_win"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:textSize="22sp"
-                        tools:text="5勝" />
-
-                    <TextView
-                        android:id="@+id/tv_personal_lose"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="22sp"
-                        tools:text="5敗" />
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tv_personal_rank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@id/tv_personal_score"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg_personal_data_bottom"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    tools:text="乙級" />
+            <LinearLayout
+                android:id="@+id/ll_win_lose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_personal_data_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_personal_rank">
 
                 <TextView
-                    android:id="@+id/tv_personal_score"
+                    android:id="@+id/tv_personal_win"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@id/ll_win_lose"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg_personal_data_bottom"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
-                    tools:text="66 分" />
-
-
-                <com.example.hwhard_kolin.util.CircleImageView
-                    android:id="@+id/iv_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_margin="20sp"
-                    android:background="@drawable/empty_icon"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true"/>
+                    tools:text="5勝" />
 
                 <TextView
-                    android:id="@+id/tv_personal_name"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_personal_lose"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@id/iv_icon"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg_personal_data_top"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:layout_marginStart="20dp"
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
-                    tools:text="王小明" />
-
-                <TextView
-                    android:id="@+id/tv_personal_school"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_personal_name"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg_personal_data_top"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="22sp"
-                    tools:text="國立三重高中" />
-
-                <TextView
-                    android:id="@+id/tv_personal_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg_personal_data_bottom"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="22sp"
-                    android:visibility="gone"
-                    tools:text="ID：WrReVH1e" />
+                    tools:text="5敗" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-        </FrameLayout>
+            <TextView
+                android:id="@+id/tv_personal_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_personal_data_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:text="ID：WrReVH1e" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>

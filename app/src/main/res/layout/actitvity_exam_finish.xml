@@ -1,6 +1,625 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.examFinish.ExamFinishView">
+
+    <TextView
+        android:id="@+id/Text_Finish"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/hanyisentytang"
+        android:gravity="center"
+        android:text="作答結束"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@id/Text_Finish_horizon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Text_Finish_horizon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <TextView
+        android:id="@+id/tv_level_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="升  階"
+        android:textSize="14dp"
+        android:visibility="invisible"
+        android:textColor="@color/levelUp"
+        app:layout_constraintBottom_toTopOf="@id/iv_rank"
+        app:layout_constraintLeft_toLeftOf="@id/iv_rank"
+        app:layout_constraintRight_toRightOf="@id/iv_rank"/>
+
+    <ImageView
+        android:id="@+id/iv_rank"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10sp"
+        app:layout_constraintBottom_toTopOf="@id/ExamFinish_Score_horizon_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Text_Finish"
+        tools:background="@drawable/rank_12" />
+
+    <TextView
+        android:id="@+id/tv_rank_score_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_rank"
+        app:layout_constraintLeft_toRightOf="@id/iv_rank"
+        app:layout_constraintTop_toTopOf="@id/iv_rank"
+        tools:text="分數：20" />
+
+    <TextView
+        android:id="@+id/tv_rank_score_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_rank_score_animation"
+        app:layout_constraintLeft_toRightOf="@id/tv_rank_score_animation"
+        app:layout_constraintTop_toTopOf="@id/tv_rank_score_animation"
+        tools:text="(+15)" />
+
+    <TextView
+        android:id="@+id/mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@id/ExamFinish_Score_horizon_1"
+        app:layout_constraintLeft_toRightOf="@id/gif_left"
+        app:layout_constraintRight_toLeftOf="@id/gif_right"
+        tools:text="練習模式" />
+
+    <TextView
+        android:id="@+id/tv_exam_score"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="15sp"
+        android:autoLink="all"
+        android:background="@drawable/bottom_line"
+        android:fontFamily="@font/hanyisentytang"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@id/ExamFinish_Score_horizon_1"
+        app:layout_constraintLeft_toRightOf="@id/ExamFinish_Guide_vertical_5"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Text_Finish_horizon"
+        tools:text="90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Guide_vertical_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Guide_vertical_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Question_Guide_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Guide_vertical_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Guide_vertical_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:scrollbarSize="20dp"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Guide_vertical_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Score_horizon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ExamFinish_Score_horizon_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10sp"
+        android:background="@drawable/exam_finish_next"
+        android:fontFamily="@font/hanyisentytang"
+        android:text="完成"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/Arrow_Guide_vertical"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Arrow_Guide_horizon" />
+
+    <Button
+        android:id="@+id/btn_notes"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10sp"
+        android:background="@drawable/notes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Question_Guide_vertical"
+        app:layout_constraintTop_toBottomOf="@id/Arrow_Guide_horizon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Arrow_Guide_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Arrow_Guide_horizon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.87" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Take_Quetion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#f1f1f1"
+        app:layout_constraintBottom_toTopOf="@id/Arrow_Guide_horizon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ExamFinish_Score_horizon_1">
+
+        <TextView
+            android:id="@+id/Question_num"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="題號"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/Question_num_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/My_Answer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/My_Answer"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="My Answer"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_my_answer_1"
+            app:layout_constraintLeft_toRightOf="@id/Question_num"
+            app:layout_constraintRight_toLeftOf="@id/Correct_Answer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Correct_Answer"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="Correct Answer"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_correct_answer_1"
+            app:layout_constraintLeft_toRightOf="@id/My_Answer"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Question_num_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/Question_num_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_my_answer_1"
+            app:layout_constraintTop_toBottomOf="@id/Question_num" />
+
+        <Button
+            android:id="@+id/btn_error_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/exclamation"
+            app:layout_constraintBottom_toTopOf="@id/btn_question_photo_1"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_1"
+            app:layout_constraintTop_toTopOf="@id/Question_num_1" />
+
+        <Button
+            android:id="@+id/btn_question_photo_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/question_button"
+            app:layout_constraintBottom_toBottomOf="@id/Question_num_1"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_1"
+            app:layout_constraintTop_toBottomOf="@id/btn_error_1" />
+
+        <TextView
+            android:id="@+id/tv_my_answer_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_my_answer_2"
+            app:layout_constraintLeft_toRightOf="@id/Question_num_1"
+            app:layout_constraintRight_toLeftOf="@id/tv_correct_answer_1"
+            app:layout_constraintTop_toBottomOf="@id/My_Answer" />
+
+        <TextView
+            android:id="@+id/tv_correct_answer_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_correct_answer_2"
+            app:layout_constraintLeft_toRightOf="@id/tv_my_answer_1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Correct_Answer" />
+
+        <TextView
+            android:id="@+id/Question_num_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="2"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/Question_num_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_my_answer_2"
+            app:layout_constraintTop_toBottomOf="@id/Question_num_1" />
+
+        <Button
+            android:id="@+id/btn_error_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/exclamation"
+            app:layout_constraintBottom_toTopOf="@id/btn_question_photo_2"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_2"
+            app:layout_constraintTop_toTopOf="@id/Question_num_2" />
+
+        <Button
+            android:id="@+id/btn_question_photo_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/question_button"
+            app:layout_constraintBottom_toBottomOf="@id/Question_num_2"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_2"
+            app:layout_constraintTop_toBottomOf="@id/btn_error_2" />
+
+        <TextView
+            android:id="@+id/tv_my_answer_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_my_answer_3"
+            app:layout_constraintLeft_toRightOf="@id/Question_num_2"
+            app:layout_constraintRight_toLeftOf="@id/tv_correct_answer_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_my_answer_1" />
+
+        <TextView
+            android:id="@+id/tv_correct_answer_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_correct_answer_3"
+            app:layout_constraintLeft_toRightOf="@id/tv_my_answer_2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_correct_answer_1" />
+
+        <TextView
+            android:id="@+id/Question_num_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="3"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/Question_num_4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_my_answer_3"
+            app:layout_constraintTop_toBottomOf="@id/Question_num_2" />
+
+        <Button
+            android:id="@+id/btn_error_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/exclamation"
+            app:layout_constraintBottom_toTopOf="@id/btn_question_photo_3"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_3"
+            app:layout_constraintTop_toTopOf="@id/Question_num_3" />
+
+        <Button
+            android:id="@+id/btn_question_photo_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/question_button"
+            app:layout_constraintBottom_toBottomOf="@id/Question_num_3"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_3"
+            app:layout_constraintTop_toBottomOf="@id/btn_error_3" />
+
+        <TextView
+            android:id="@+id/tv_my_answer_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_my_answer_4"
+            app:layout_constraintLeft_toRightOf="@id/Question_num_3"
+            app:layout_constraintRight_toLeftOf="@id/tv_correct_answer_3"
+            app:layout_constraintTop_toBottomOf="@id/tv_my_answer_2" />
+
+        <TextView
+            android:id="@+id/tv_correct_answer_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_correct_answer_4"
+            app:layout_constraintLeft_toRightOf="@id/tv_my_answer_3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_correct_answer_2" />
+
+        <TextView
+            android:id="@+id/Question_num_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="4"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/Question_num_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_my_answer_4"
+            app:layout_constraintTop_toBottomOf="@id/Question_num_3" />
+
+        <Button
+            android:id="@+id/btn_error_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/exclamation"
+            app:layout_constraintBottom_toTopOf="@id/btn_question_photo_4"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_4"
+            app:layout_constraintTop_toTopOf="@id/Question_num_4" />
+
+        <Button
+            android:id="@+id/btn_question_photo_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/question_button"
+            app:layout_constraintBottom_toBottomOf="@id/Question_num_4"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_4"
+            app:layout_constraintTop_toBottomOf="@id/btn_error_4" />
+
+        <TextView
+            android:id="@+id/tv_my_answer_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_my_answer_5"
+            app:layout_constraintLeft_toRightOf="@id/Question_num_4"
+            app:layout_constraintRight_toLeftOf="@id/tv_correct_answer_4"
+            app:layout_constraintTop_toBottomOf="@id/tv_my_answer_3" />
+
+        <TextView
+            android:id="@+id/tv_correct_answer_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_correct_answer_5"
+            app:layout_constraintLeft_toRightOf="@id/tv_my_answer_4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_correct_answer_3" />
+
+        <TextView
+            android:id="@+id/Question_num_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="5"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_my_answer_5"
+            app:layout_constraintTop_toBottomOf="@id/Question_num_4" />
+
+        <Button
+            android:id="@+id/btn_error_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/exclamation"
+            app:layout_constraintBottom_toTopOf="@id/btn_question_photo_5"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_5"
+            app:layout_constraintTop_toTopOf="@id/Question_num_5" />
+
+        <Button
+            android:id="@+id/btn_question_photo_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/question_button"
+            app:layout_constraintBottom_toBottomOf="@id/Question_num_5"
+            app:layout_constraintLeft_toRightOf="@id/Question_Button_Guide_vertical"
+            app:layout_constraintRight_toRightOf="@id/Question_num_5"
+            app:layout_constraintTop_toBottomOf="@id/btn_error_5" />
+
+        <TextView
+            android:id="@+id/tv_my_answer_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/Question_num_5"
+            app:layout_constraintRight_toLeftOf="@id/tv_correct_answer_5"
+            app:layout_constraintTop_toBottomOf="@id/tv_my_answer_4" />
+
+        <TextView
+            android:id="@+id/tv_correct_answer_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_my_answer_5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_correct_answer_4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/Question_Button_Guide_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.26" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_buttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gif_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

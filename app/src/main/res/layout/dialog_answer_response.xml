@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:background="@drawable/white_radius_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_answer_report_title"
+            android:gravity="center"
+            android:text="題目回報"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:checked="false"
+            android:text="正確答案錯誤"
+            android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="正確答案不唯一"
+            android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="題目有錯字或不清晰"
+            android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/rb4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="其他"
+            android:textSize="16dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/et_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black" />
+
+        </ScrollView>
+
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10sp"
+            android:background="@drawable/bg_confirm"
+            android:text="確定" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

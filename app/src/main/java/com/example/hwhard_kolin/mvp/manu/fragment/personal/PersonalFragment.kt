@@ -6,16 +6,14 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import co.bxvip.ui.tocleanmvp.base.BaseMvpFragment
 import com.bumptech.glide.Glide
 import com.example.hwhard_kolin.R
 import com.example.hwhard_kolin.bean.PersonalBean
 import com.example.hwhard_kolin.dialog.AnnouncementDialog
 import com.example.hwhard_kolin.mvp.rank.RankView
-import com.example.hwhard_kolin.util.SP
-import com.example.hwhard_kolin.util.downAnimator
-import com.example.hwhard_kolin.util.toRank
-import com.example.hwhard_kolin.util.upAnimator
+import com.example.hwhard_kolin.util.*
 import kotlinx.android.synthetic.main.item_personal.*
 
 class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
@@ -53,10 +51,12 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
         presenter = checkNotNull(p0)
     }
 
-    override fun initView() {
+    override fun initView() {}
 
+    override fun lazyLoad() {
         context?.let {
             personalBean = SP.getPersonalData(it)
+            iv_rank.setImageDrawable(ContextCompat.getDrawable(it,personalBean.rank.toRankDrawable()))
         }
 
         tv_personal_name.text = personalBean.name
@@ -70,10 +70,11 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
         iv_icon.borderWidth = 0
         Glide.with(this)
             .load(personalBean.url)
-            .error(R.drawable.ic_launcher_background)
+            .error(R.drawable.empty_icon)
             .into(iv_icon)
+    }
 
-
+    override fun initEvents() {
         btn_rank.setOnClickListener(this)
         btn_rank.setOnTouchListener(this)
 
@@ -82,7 +83,6 @@ class PersonalFragment : BaseMvpFragment<PersonalContract.Presenter>(),
 
         btn_announcement.setOnClickListener(this)
         btn_announcement.setOnTouchListener(this)
-
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {

@@ -21,6 +21,9 @@
     <string name="announcemetn_content_1">積分：\n由於題庫尚未充足，目前積分模式最高開放到丙級，更高牌位開放時間另行公告通知\n\n範圍：\n目前各冊範圍依照103課綱為主，90%的題目也都適用於108課綱考生，將於2021年學測後全面更改為108課綱</string>
     <string name="announcemetn_content_2">LINE：@767roall\nFB：https://www.facebook.com/HWNan/?modal=admin_todo_tour\n\n介紹：\n加入LINE官方帳號可以隨時詢問APP內遇到的題目，相關人員將為您解答</string>
     <string name="announcemetn_content_3">設計理念：\n\n希望數學可以是一種遊戲：\n一起享受找答案的過程，學習討論、交流，最後享受破解的成就感。\n\n\陪伴大家在數學裡成長：\n希望在這裡找到與你程度相當的題目，然後按照自己的步調，慢慢成長，學會更難、更複雜的知識。\n\n總之，讓我們一起找答案吧！</string>
+    <string name="frac_answer">%1$s/%2$s</string>
+    <string name="picker_string">【當前選擇】\n\n%1$s-%2$s-%3$s</string>
+
 
     <string-array name="city">
         <item>基隆市</item>
@@ -480,12 +483,14 @@
 
 
     <string-array name="Type3">
-        <item>學測練習</item>
+        <item>(A)學測練習</item>
+        <item>(B)學測練習</item>
     </string-array>
 
 
     <string-array name="Type4">
-        <item>個人積分</item>
+        <item>(A)個人積分</item>
+        <item>(B)個人積分</item>
     </string-array>
 
 </resources>

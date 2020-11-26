@@ -1,5 +1,7 @@
 package com.example.hwhard_kolin.mvp.exam
 
+import android.content.Intent
+import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.KeyEvent
@@ -10,11 +12,13 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import co.bxvip.ui.tocleanmvp.base.BaseMvpActivity
+import com.example.hwhard_kolin.PRACTICE_MODE
 import com.example.hwhard_kolin.R
 import com.example.hwhard_kolin.adapter.QuestionPagerAdapter
 import com.example.hwhard_kolin.bean.PersonalBean
 import com.example.hwhard_kolin.bean.QuestionList
 import com.example.hwhard_kolin.dialog.SubmitDialog
+import com.example.hwhard_kolin.mvp.examFinish.ExamFinishView
 import com.example.hwhard_kolin.util.*
 import kotlinx.android.synthetic.main.activity_exam.*
 
@@ -30,13 +34,21 @@ class ExamView : BaseMvpActivity<ExamContract.Presenter>(), ExamContract.View ,V
     /**
      *  時間設定 30 分鐘
      */
-    private var countDownTimer = object : CountDownTimer(10000, 1000) {
+    private var countDownTimer = object : CountDownTimer(1800000, 1000) {
         override fun onFinish() {
             if(submitDialog?.isShowing!!) {
                 submitDialog?.dismiss()
             }
             SubmitDialog(context,
-                confirm = { finish() },
+                confirm = {
+                    val intent = Intent(context,ExamFinishView::class.java)
+                    val bundle = Bundle()
+                    bundle.putSerializable("question",QuestionList(questionList))
+                    bundle.putString("type",examType)
+                    intent.putExtra("bundle",bundle)
+                    startActivity(intent)
+                    finish()
+                },
                 isTimeOut = true
             ).show()
         }
@@ -48,9 +60,14 @@ class ExamView : BaseMvpActivity<ExamContract.Presenter>(), ExamContract.View ,V
 
     private val botList by lazy { listOf(bot_1, bot_2, bot_3, bot_4, bot_5) }
 
+    /**
+     *  題目、答案
+     */
     private val questionList by lazy {
         (intent.getBundleExtra("bundle")?.getSerializable("question") as QuestionList).questionList
     }
+
+    private val examType by lazy { intent.getBundleExtra("bundle")?.getString("type") ?: PRACTICE_MODE }
 
     private var currentPosition = 0
 
@@ -66,9 +83,18 @@ class ExamView : BaseMvpActivity<ExamContract.Presenter>(), ExamContract.View ,V
 
     override fun initView(p0: View?) {
 
+        /**
+         *  按下提交顯示的 Dialog
+         */
         submitDialog = SubmitDialog(context,
             confirm = {
                 countDownTimer.cancel()
+                val intent = Intent(this,ExamFinishView::class.java)
+                val bundle = Bundle()
+                bundle.putSerializable("question",QuestionList(questionList))
+                bundle.putString("type",examType)
+                intent.putExtra("bundle",bundle)
+                startActivity(intent)
                 finish()
             }
         )
@@ -83,13 +109,7 @@ class ExamView : BaseMvpActivity<ExamContract.Presenter>(), ExamContract.View ,V
             adapter = QuestionPagerAdapter(supportFragmentManager)
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                }
-
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
                 override fun onPageSelected(position: Int) {
                     val num = position + 1
                     tv_question_num.text = "$num/5"

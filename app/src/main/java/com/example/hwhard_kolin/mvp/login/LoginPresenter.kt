@@ -119,7 +119,7 @@ class LoginPresenter(val context: Context, val mView: LoginContract.View?) :
 
 
     override fun writeToDB(personalBean: PersonalBean) {
-        db.collection("personalData").add(personalBean)
+        db.collection("personalData").document(personalBean.id).set(personalBean)
             .addOnSuccessListener {
                 // 存入SP
                 setID(personalBean.loginType, personalBean.id)

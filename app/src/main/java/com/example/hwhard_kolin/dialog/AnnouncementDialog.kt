@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.example.hwhard_kolin.R
+import com.example.hwhard_kolin.bean.AnswerBean
+import com.example.hwhard_kolin.util.CloudFireStore
 import kotlinx.android.synthetic.main.dialog_announcement.*
 
 class AnnouncementDialog : DialogFragment() {
@@ -23,6 +25,8 @@ class AnnouncementDialog : DialogFragment() {
         )
     }
 
+    private var content = ""
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,6 +39,14 @@ class AnnouncementDialog : DialogFragment() {
         super.onCreate(savedInstanceState)
 
         setStyle(STYLE_NO_TITLE, R.style.dialog_fragment)
+
+        CloudFireStore.getAnnouncement(
+            response = {
+                content = it.replace("$", "\n")
+                announcement_content_text.text = content
+
+            }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,8 +60,7 @@ class AnnouncementDialog : DialogFragment() {
         announcement_title_1.setOnClickListener {
             titleState = listOf(true, false, false)
             titleColor()
-            view.findViewById<TextView>(R.id.announcement_content_text).text =
-                getString(R.string.announcemetn_content_1)
+            view.findViewById<TextView>(R.id.announcement_content_text).text = content
         }
 
         announcement_title_2.setOnClickListener {
@@ -73,14 +84,18 @@ class AnnouncementDialog : DialogFragment() {
             if (b) {
                 parentFragment?.context?.let { context ->
                     titleTextView[index].run {
-                        background = ContextCompat.getDrawable(context, R.drawable.announcement_title_press)
+                        background =
+                            ContextCompat.getDrawable(context, R.drawable.announcement_title_press)
                         setTextColor(Color.BLACK)
                     }
                 }
             } else {
                 parentFragment?.context?.let { context ->
                     titleTextView[index].run {
-                        background = ContextCompat.getDrawable(context, R.drawable.announcement_title_unpress)
+                        background = ContextCompat.getDrawable(
+                            context,
+                            R.drawable.announcement_title_unpress
+                        )
                         setTextColor(Color.WHITE)
                     }
                 }
