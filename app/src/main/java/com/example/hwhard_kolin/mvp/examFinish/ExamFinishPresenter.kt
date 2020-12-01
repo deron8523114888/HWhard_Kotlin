@@ -40,30 +40,35 @@ class ExamFinishPresenter(private val mView: ExamFinishContract.View?) :
     override fun updateRankScore(num: Int) {
         /** 積分分數
          *  100 -> +10
-         *  90 -> +8
-         *  80 -> +6
-         *  70 -> +4
-         *  60 -> +2
-         *  50 -> -2
-         *  40 -> -4
-         *  30 -> -6
-         *  20 -> -8
-         *  10 -> -10
-         *  0 -> -12
+         *  95~99 -> +9
+         *  90~94 -> +8
+         *  85~89 -> +7
+         *  80~84 -> +6
+         *  75~79 -> +5
+         *  70~74 -> +4
+         *  65~69 -> +3
+         *  60~64 -> +2
+         *  55~59 -> -1
+         *  50~54 -> -2
+         *  45~49 -> -3
+         *  40~44 -> -4
+         *  35~39 -> -5
+         *  30~34 -> -6
+         *  25~29 -> -7
+         *  20~24 -> -8
+         *  15~19 -> -9
+         *  10~14 -> -10
+         *  5~9 -> -11
+         *  0~4 -> -12
          */
-        for (i in 10 downTo 0) {
-            if (num >= i * 10) {
-                var score = -10 + i * 2
-                if (num >= 60) {
-                    score += 2
-                }
-                if (num < 60) {
-                    score -= 2
-                }
-                mView?.showRankScore(score)
-                break
-            }
+        if (num >= 60) {
+            val score = 2 + (num - 60) / 5
+            mView?.showRankScore(score)
+        } else {
+            val score = 0 + (num - 60) / 5
+            mView?.showRankScore(score)
         }
+
     }
 
     override fun onDestory() {

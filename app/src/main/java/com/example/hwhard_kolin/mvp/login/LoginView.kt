@@ -3,40 +3,23 @@ package com.example.hwhard_kolin.mvp.login
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.Uri
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
-import bolts.Task
 import co.bxvip.ui.tocleanmvp.base.BaseMvpActivity
-import com.bumptech.glide.Glide
 import com.example.hwhard_kolin.R
 import com.example.hwhard_kolin.bean.AnswerBean
 import com.example.hwhard_kolin.bean.PersonalBean
 import com.example.hwhard_kolin.dialog.SchoolDialog
 import com.example.hwhard_kolin.mvp.manu.ManuView
 import com.example.hwhard_kolin.util.*
-import com.example.hwhard_kolin.util.answer.A_condition_probabiility
 import com.facebook.*
-import com.facebook.appevents.AppEventsLogger
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
-import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.GoogleApi
-import com.google.android.gms.common.api.GoogleApiClient
-import com.google.rpc.context.AttributeContext
 import com.linecorp.linesdk.LineApiResponseCode
 import com.linecorp.linesdk.auth.LineLoginApi
 import kotlinx.android.synthetic.main.activity_login_view.*
-import org.json.JSONObject
-import java.lang.Exception
-import java.security.cert.Extension
-import java.util.*
 
 
 class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View,
@@ -57,14 +40,14 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
     }
 
     override fun initView(p0: View?) {
-        // 新增題目使用
-//        CloudFireStore.newQuestion(
-//            chapter = "A_condition_probability", degree = "E", answer = A_condition_probabiility(), answerBean = AnswerBean(
-//                type = "Int",
-//                answerTop = "-11",
-//                answerBottom = ""
-//            )
-//        )
+        /**
+         *  更新答案到資料庫使用 -> 須從答案庫撈檔案過來再 run
+         */
+//        newQ("trigonometric_ratio", "D", mapOf())
+    }
+
+    private fun newQ(chapter: String, degree: String, map: Map<String, Map<String, String>>) {
+        CloudFireStore.newQuestion(chapter = chapter, degree = degree, answer = map)
     }
 
     override fun onClick(v: View?) {
@@ -204,7 +187,7 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
                         showErrorMessage("無權限登入")
                     }
                     else -> {
-                        Log.v("test__",result.responseCode.toString());
+                        Log.v("test__", result.responseCode.toString());
                         showErrorMessage("LINE登入 - 未知錯誤")
                     }
                 }
@@ -223,7 +206,7 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
                         personalBean = PersonalBean(
                             name = currentProfile?.name.toString(),
                             id = currentProfile?.id.toString(),
-                            url = currentProfile?.getProfilePictureUri(50,50).toString(),
+                            url = currentProfile?.getProfilePictureUri(50, 50).toString(),
                             loginType = "facebook"
                         )
 

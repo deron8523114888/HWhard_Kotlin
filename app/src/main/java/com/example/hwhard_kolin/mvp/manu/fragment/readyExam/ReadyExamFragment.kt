@@ -1,19 +1,14 @@
 package com.example.hwhard_kolin.mvp.manu.fragment.readyExam
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import co.bxvip.ui.tocleanmvp.base.BaseMvpFragment
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
-import com.example.hwhard_kolin.PRACTICE_MODE
 import com.example.hwhard_kolin.R
-import com.example.hwhard_kolin.RANK_MODE
-import com.example.hwhard_kolin.bean.PersonalBean
 import com.example.hwhard_kolin.mvp.exam.ExamView
 import com.example.hwhard_kolin.util.*
 import kotlinx.android.synthetic.main.item_exam.*
@@ -104,12 +99,13 @@ class ReadyExamFragment : BaseMvpFragment<ReadyExamContract.Presenter>(),
     private fun getQuestion() {
         // 針對不同模式
         when (mExamModeList[0]) {
-            0 -> presenter.goChapter(mExamModeList)
-            1 -> presenter.goVolume(mExamModeList)
-            2 -> presenter.goGSAT(mExamModeList)
+            0 -> presenter.goChapter(mExamModeList, personalBean.rank)
+            1 -> presenter.goVolume(mExamModeList[1] + 1, personalBean.rank)
+            2 -> presenter.goGSAT(mExamModeList[1], personalBean.rank)
             3 -> {
+                // 判斷積分模式是否開啟
                 CloudFireStore.rankCheck(
-                    success = { presenter.goRank(mExamModeList) },
+                    success = { presenter.goRank(mExamModeList[1], personalBean.rank) },
                     fail = {
                         showErrorMessage(it)
                     }
@@ -193,10 +189,6 @@ class ReadyExamFragment : BaseMvpFragment<ReadyExamContract.Presenter>(),
             // 個人牌位
             mutableListOf(mutableListOf("(A)個人牌位"), mutableListOf("(B)個人牌位"))
         )
-    }
-
-    override fun getPersonData(): PersonalBean {
-        return personalBean
     }
 
     override fun isActive(): Boolean {

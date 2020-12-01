@@ -24,6 +24,3 @@ data class AnswerBean(
     var answerBottom: String = ""
 ) : Serializable
 
-data class Permutation(
-    var E:Int = 6
-)

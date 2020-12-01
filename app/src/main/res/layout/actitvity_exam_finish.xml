@@ -85,7 +85,7 @@
 
     <TextView
         android:id="@+id/tv_exam_score"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_margin="15sp"
         android:autoLink="all"
@@ -95,10 +95,9 @@
         android:textColor="@android:color/holo_red_dark"
         android:textSize="70sp"
         app:layout_constraintBottom_toTopOf="@id/ExamFinish_Score_horizon_1"
-        app:layout_constraintLeft_toRightOf="@id/ExamFinish_Guide_vertical_5"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Text_Finish_horizon"
-        tools:text="90" />
+        tools:text="100" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ExamFinish_Guide_vertical_1"

@@ -170,19 +170,34 @@ fun String.getNum(): Map<String, Int> {
 }
 
 /**
- *  取得隨機五個數字
+ *  取得小於該數字的隨機數，並丟入所需數量
  */
-fun Int.getFiveRandom() : ArrayList<Int>{
-    if(this < 5){
-        return arrayListOf()
+fun Int.getRandomQuestionNum(isRepeat: Boolean, count: Int): ArrayList<Int> {
+
+    // 所需數量不能大於最大數
+    if (this < count && !isRepeat) {
+        return ArrayList()
     }
-    var resultList = arrayListOf<Int>()
-    while (resultList.size != 5){
-        val random = (1..this).random()
-        if(resultList.contains(random)){
-            continue
+
+    val resultList = arrayListOf<Int>()
+
+    // 數字可重複
+    if (isRepeat) {
+        while (resultList.size != count) {
+            val random = (1..this).random()
+            resultList.add(random)
         }
-        resultList.add(random)
     }
+    // 數字不可重複
+    else {
+        while (resultList.size != count) {
+            val random = (1..this).random()
+            if (resultList.contains(random)) {
+                continue
+            }
+            resultList.add(random)
+        }
+    }
+
     return resultList
 }
