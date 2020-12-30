@@ -106,7 +106,7 @@ class ExamView : BaseMvpActivity<ExamContract.Presenter>(), ExamContract.View ,V
 
 
         vp_question.run {
-            adapter = QuestionPagerAdapter(supportFragmentManager)
+            adapter = QuestionPagerAdapter(supportFragmentManager,questionList)
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}
                 override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}

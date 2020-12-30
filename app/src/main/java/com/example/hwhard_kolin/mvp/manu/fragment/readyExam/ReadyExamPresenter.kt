@@ -95,7 +95,7 @@ class ReadyExamPresenter(val view: ReadyExamContract.View?) :
      */
     private fun logic(data: QuerySnapshot, rank: Int, isRank: Boolean = false) {
         val resultList = mutableListOf<QuestionBean>()
-
+        val documents = data.documents
         // 難度和所需題數
         val questionInfo = rank.getDegreeAndNum()
 
@@ -104,70 +104,47 @@ class ReadyExamPresenter(val view: ReadyExamContract.View?) :
             return
         }
 
-        if (data.documents.size == 0) {
+        if (documents.size == 0) {
             view?.showErrorMessage("該模式尚未有對應資料，請聯繫客服")
             return
         }
 
         // 五題隨機對應章節
-        val chapterList = data.documents.size.getRandomQuestionNum(isRepeat = true, count = 5)
+        val chapterList = documents.size.getRandomQuestionNum(isRepeat = true, count = 5)
 
         // 第一難度
-        // Todo 目前題目會重複，需修正
         for (i in 0 until questionInfo.num1) {
 
             val answer1 =
-                data.documents[chapterList[i] - 1].data?.get(questionInfo.degree1) as Map<*, *>
+                documents[chapterList[i] - 1].data?.get(questionInfo.degree1) as Map<*, *>
 
             if (answer1.isEmpty() || answer1.size < questionInfo.num1) {
-                view?.showErrorMessage("${data.documents[chapterList[i] - 1].id}_${chapterList[i]}_${questionInfo.degree1}：題庫數量不足，請聯繫客服")
+                view?.showErrorMessage("題庫數量不足，請聯繫客服")
+                Log.v("Question","${documents[chapterList[i] - 1].id}_${chapterList[i]}_${questionInfo.degree1}：題目不足)")
                 return
             }
-            // 藉由題庫數量取得 random 題號
-            val randon =
-                answer1.size.getRandomQuestionNum(isRepeat = true, count = 1)[0].toString()
 
-            val answerBean =
-                Gson().fromJson(answer1[randon].toString(), AnswerBean::class.java)
-
-            resultList.add(
-                QuestionBean(
-                    chapter = data.documents[chapterList[i] - 1].id,
-                    degree = questionInfo.degree1,
-                    num = randon,
-                    type = answerBean.type,
-                    answerTop = answerBean.answerTop,
-                    answerBottom = answerBean.answerBottom
-                )
-            )
-
-        }
-
-        // 第二難度
-        // Todo 目前題目會重複，需修正
-        if (questionInfo.degree2.isNotEmpty()) {
-            for (i in questionInfo.num1 until 5) {
-
-                val answer2 =
-                    data.documents[chapterList[i]].data?.get(questionInfo.degree2) as Map<*, *>
-
-                if (answer2.isEmpty() || answer2.size < questionInfo.num2) {
-                    view?.showErrorMessage("${chapterList[i]}_${questionInfo.degree2}：題庫數量不足，請聯繫客服")
-                    return
-                }
+            while (true) {
+                var isExist = false
                 // 藉由題庫數量取得 random 題號
                 val randon =
-                    answer2.size.getRandomQuestionNum(
-                        isRepeat = true,
-                        count = 1
-                    )[0].toString()
+                    answer1.size.getRandomQuestionNum(isRepeat = true, count = 1)[0].toString()
 
-                val answerBean =
-                    Gson().fromJson(answer2[randon].toString(), AnswerBean::class.java)
+                val answerBean = Gson().fromJson(answer1[randon].toString(), AnswerBean::class.java)
+
+                resultList.forEach {
+                    // 判斷是否有存在同樣題目
+                    if (randon == it.num && documents[chapterList[i] - 1].id == it.chapter) {
+                        isExist = true
+                        return@forEach
+                    }
+                }
+                // 存在則重新 run
+                if (isExist) continue
 
                 resultList.add(
                     QuestionBean(
-                        chapter = data.documents[chapterList[i]].id,
+                        chapter = documents[chapterList[i] - 1].id,
                         degree = questionInfo.degree1,
                         num = randon,
                         type = answerBean.type,
@@ -175,6 +152,61 @@ class ReadyExamPresenter(val view: ReadyExamContract.View?) :
                         answerBottom = answerBean.answerBottom
                     )
                 )
+
+                break
+            }
+
+        }
+
+        // 第二難度
+        if (questionInfo.degree2.isNotEmpty()) {
+            for (i in questionInfo.num1 until 5) {
+
+                val answer2 =
+                    documents[chapterList[i] - 1].data?.get(questionInfo.degree2) as Map<*, *>
+
+                if (answer2.isEmpty() || answer2.size < questionInfo.num2) {
+                    view?.showErrorMessage("題庫數量不足，請聯繫客服")
+                    Log.v("Question","${documents[chapterList[i] - 1].id}_${chapterList[i]}_${questionInfo.degree2}：題目不足)")
+                    return
+                }
+
+                while (true) {
+                    var isExist = false
+                    // 藉由題庫數量取得 random 題號
+                    val randon =
+                        answer2.size.getRandomQuestionNum(
+                            isRepeat = true,
+                            count = 1
+                        )[0].toString()
+
+                    val answerBean =
+                        Gson().fromJson(answer2[randon].toString(), AnswerBean::class.java)
+
+                    resultList.forEachIndexed { index, it ->
+                        // 判斷是否有存在同樣題目
+                        if (index >= questionInfo.num1 && randon == it.num && documents[chapterList[i] - 1].id == it.chapter) {
+                            isExist = true
+                            return@forEachIndexed
+                        }
+                    }
+
+                    // 存在則重新 run
+                    if (isExist) continue
+
+                    resultList.add(
+                        QuestionBean(
+                            chapter = documents[chapterList[i] - 1].id,
+                            degree = questionInfo.degree2,
+                            num = randon,
+                            type = answerBean.type,
+                            answerTop = answerBean.answerTop,
+                            answerBottom = answerBean.answerBottom
+                        )
+                    )
+
+                    break
+                }
             }
         }
 

@@ -10,7 +10,7 @@ import com.google.gson.Gson
 
 object CloudFireStore {
 
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
 
     /**
@@ -122,6 +122,7 @@ object CloudFireStore {
                 val answer1 = q1.data?.get(questionInfo.degree1) as Map<*, *>
                 if (answer1.size < questionInfo.num1) {
                     fail("題庫數量不足，請聯繫客服")
+                    Log.v("Question","${chapter}_${questionInfo.degree1}：題目不足)")
                     return@addOnSuccessListener
                 }
                 // 藉由題庫數量取得 random 題號
@@ -161,6 +162,7 @@ object CloudFireStore {
 
                     if (answer2.size < questionInfo.num2) {
                         fail("題庫數量不足，請聯繫客服")
+                        Log.v("Question","${chapter}_${questionInfo.degree2}：題目不足)")
                         return@addOnSuccessListener
                     }
                     // 藉由題庫數量取得 random 題號

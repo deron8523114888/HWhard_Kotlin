@@ -43,7 +43,7 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
         /**
          *  更新答案到資料庫使用 -> 須從答案庫撈檔案過來再 run
          */
-//        newQ("trigonometric_ratio", "D", mapOf())
+//        newQ("line_circle", "E", mapOf())
     }
 
     private fun newQ(chapter: String, degree: String, map: Map<String, Map<String, String>>) {
