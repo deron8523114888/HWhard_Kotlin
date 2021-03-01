@@ -16,6 +16,7 @@ import com.example.hwhard_kolin.mvp.manu.ManuView
 import com.example.hwhard_kolin.util.*
 import com.facebook.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.linecorp.linesdk.LineApiResponseCode
 import com.linecorp.linesdk.auth.LineLoginApi
@@ -40,10 +41,119 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
     }
 
     override fun initView(p0: View?) {
+
+        Log.v("Thread",Thread.currentThread().name)
+
         /**
          *  更新答案到資料庫使用 -> 須從答案庫撈檔案過來再 run
          */
-//        newQ("line_circle", "E", mapOf())
+        newQ("line_circle", "D", mapOf(
+            "1" to mapOf(
+                "type" to "Single",
+                "answerTop" to "E",
+                "answerBottom" to "0"
+            ),
+            "2" to mapOf(
+                "type" to "Multiple",
+                "answerTop" to "AE",
+                "answerBottom" to "0"
+            ),
+            "3" to mapOf(
+                "type" to "Int",
+                "answerTop" to "20",
+                "answerBottom" to "0"
+            ),
+            "4" to mapOf(
+                "type" to "Int",
+                "answerTop" to "11",
+                "answerBottom" to "0"
+            ),
+            "5" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "16",
+                "answerBottom" to "3"
+            ),
+            "6" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "21",
+                "answerBottom" to "9"
+            ),
+            "7" to mapOf(
+                "type" to "Int",
+                "answerTop" to "85",
+                "answerBottom" to "0"
+            ),
+            "8" to mapOf(
+                "type" to "Int",
+                "answerTop" to "41",
+                "answerBottom" to "0"
+            ),
+            "9" to mapOf(
+                "type" to "Single",
+                "answerTop" to "D",
+                "answerBottom" to "0"
+            ),
+            "10" to mapOf(
+                "type" to "Int",
+                "answerTop" to "17",
+                "answerBottom" to "0"
+            ),
+            "11" to mapOf(
+                "type" to "Single",
+                "answerTop" to "E",
+                "answerBottom" to "0"
+            ),
+            "12" to mapOf(
+                "type" to "Multiple",
+                "answerTop" to "ACE",
+                "answerBottom" to "0"
+            ),
+            "13" to mapOf(
+                "type" to "Multiple",
+                "answerTop" to "ACE",
+                "answerBottom" to "0"
+            ),
+            "14" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "16",
+                "answerBottom" to "5"
+            ),
+            "15" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "-2",
+                "answerBottom" to "3"
+            ),
+            "16" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "1",
+                "answerBottom" to "5"
+            ),
+            "17" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "-11",
+                "answerBottom" to "4"
+            ),
+            "18" to mapOf(
+                "type" to "Int",
+                "answerTop" to "18",
+                "answerBottom" to "0"
+            ),
+            "19" to mapOf(
+                "type" to "Multiple",
+                "answerTop" to "ACD",
+                "answerBottom" to "992"
+            ),
+            "20" to mapOf(
+                "type" to "Frac",
+                "answerTop" to "16",
+                "answerBottom" to "3"
+            ),
+            "21" to mapOf(
+                "type" to "Int",
+                "answerTop" to "-7",
+                "answerBottom" to "0"
+            )
+        ))
     }
 
     private fun newQ(chapter: String, degree: String, map: Map<String, Map<String, String>>) {
@@ -78,7 +188,7 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
                 if (facebookID.isNotEmpty()) {
                     mPresenter.detectIsAccountExsit(facebookID, "facebook")
                 } else {
-                    mPresenter.loginToFB(callBack)
+                    mPresenter.loginToFB()
                 }
             }
             btn_gmail -> {
@@ -220,6 +330,7 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
 
             Constants.GMAIL_REQUEST_CODE -> {
 
+                Log.v("gmail",data.toString())
                 val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                 try {
                     val result = task.getResult(ApiException::class.java)
@@ -237,7 +348,9 @@ class LoginView : BaseMvpActivity<LoginContract.Presenter>(), LoginContract.View
                     )
 
                 } catch (e: ApiException) {
+
                     Toast.makeText(context, "GMAIL 回傳格式錯誤", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                 }
 
             }

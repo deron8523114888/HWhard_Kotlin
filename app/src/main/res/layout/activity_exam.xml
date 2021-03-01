@@ -19,7 +19,6 @@
         app:layout_constraintBottom_toTopOf="@id/Answer_Guide_herizon1"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/Answer_black_herizon2"
             android:layout_width="wrap_content"

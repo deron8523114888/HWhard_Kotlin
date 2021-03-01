@@ -29,6 +29,8 @@ class LoginPresenter(val context: Context, val mView: LoginContract.View?) :
 
     private val db by lazy { FirebaseFirestore.getInstance() }
 
+    private var callBack = CallbackManager.Factory.create()
+
     init {
         mView?.setPresenter(this)
     }
@@ -55,10 +57,10 @@ class LoginPresenter(val context: Context, val mView: LoginContract.View?) :
         }
     }
 
-    override fun loginToFB(callback: CallbackManager) {
+    override fun loginToFB() {
 
         LoginManager.getInstance().run {
-            registerCallback(callback, object : FacebookCallback<LoginResult> {
+            registerCallback(callBack, object : FacebookCallback<LoginResult> {
                 override fun onSuccess(result: LoginResult?) {
                     mView?.showErrorMessage("onSuccess")
                 }

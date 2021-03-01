@@ -32,7 +32,7 @@ interface LoginContract {
 
         fun loginToLine()
 
-        fun loginToFB(callback: CallbackManager)
+        fun loginToFB()
 
         fun loginToGmail()
 
